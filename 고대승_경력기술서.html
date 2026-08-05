@@ -1,0 +1,3590 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>고대승 | 시스템·밸런스 게임 기획자</title>
+  <style>
+    :root {
+      --navy-950: #0c1b2a;
+      --navy-800: #173653;
+      --navy-650: #25577f;
+      --blue-500: #367fb2;
+      --blue-100: #eaf3f9;
+      --blue-050: #f5f9fc;
+      --ink: #17222d;
+      --muted: #5e6c78;
+      --line: #d5e0e8;
+      --paper: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #e8edf1;
+      color: var(--ink);
+      font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+      font-size: 10.4pt;
+      line-height: 1.58;
+      word-break: keep-all;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body { padding: 18px 0 36px; }
+
+    .sheet {
+      position: relative;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 18px;
+      padding: 11mm 15mm 11mm;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 12px 36px rgba(12, 27, 42, .14);
+      break-after: page;
+      page-break-after: always;
+    }
+
+    .sheet:last-child {
+      break-after: auto;
+      page-break-after: auto;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    p:last-child { margin-bottom: 0; }
+
+    .eyebrow {
+      margin-bottom: 5px;
+      color: var(--blue-500);
+      font-size: 8.5pt;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 18px;
+      padding-bottom: 7mm;
+      border-bottom: 2px solid var(--navy-950);
+    }
+
+    .name {
+      margin: 0;
+      color: var(--navy-950);
+      font-size: 24pt;
+      font-weight: 850;
+      line-height: 1.05;
+      letter-spacing: -.05em;
+    }
+
+    .role {
+      margin: 7px 0 0;
+      color: var(--navy-650);
+      font-size: 10pt;
+      font-weight: 750;
+      letter-spacing: .055em;
+    }
+
+    .contact {
+      display: grid;
+      gap: 3px;
+      min-width: 58mm;
+      color: var(--muted);
+      font-size: 8.8pt;
+      text-align: right;
+    }
+
+    .contact strong {
+      color: var(--navy-800);
+      font-weight: 750;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.55fr .75fr;
+      gap: 10mm;
+      padding: 6mm 0 5mm;
+    }
+
+    .hero h2 {
+      max-width: 120mm;
+      margin-bottom: 3mm;
+      color: var(--navy-950);
+      font-size: 16.5pt;
+      font-weight: 820;
+      line-height: 1.34;
+      letter-spacing: -.035em;
+    }
+
+    .hero h2 span { color: var(--blue-500); }
+
+    .summary {
+      margin: 0;
+      color: #34434f;
+      font-size: 8.8pt;
+      line-height: 1.62;
+    }
+
+    .career-badge {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5mm;
+      border-radius: 5px;
+      background: var(--navy-950);
+      color: white;
+    }
+
+    .career-badge .number {
+      font-size: 23pt;
+      font-weight: 850;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .career-badge .label {
+      margin-top: 5px;
+      color: #bfd4e5;
+      font-size: 8.3pt;
+      font-weight: 650;
+    }
+
+    .section { margin-top: 4.5mm; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2.8mm;
+      color: var(--navy-950);
+      font-size: 10.5pt;
+      font-weight: 850;
+      letter-spacing: .025em;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 18px;
+      height: 3px;
+      background: var(--blue-500);
+    }
+
+    .strengths {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4mm;
+    }
+
+    .capability-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(52mm, .7fr);
+      gap: 7mm;
+      align-items: stretch;
+    }
+
+    .principles-panel {
+      padding: 5mm;
+      border-left: 1px solid var(--blue-500);
+      background: var(--blue-100);
+    }
+
+    .principles-kicker {
+      margin: 0 0 3mm;
+      color: var(--blue-500);
+      font-size: 7pt;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .principle-list {
+      display: grid;
+      gap: 3mm;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .principle-list li {
+      display: grid;
+      grid-template-columns: 7mm 1fr;
+      gap: 2mm;
+      color: var(--navy-950);
+      font-size: 8pt;
+      line-height: 1.5;
+    }
+
+    .principle-list strong {
+      color: var(--blue-500);
+      font-size: 7pt;
+    }
+
+    .strength {
+      min-height: 29mm;
+      padding: 3.8mm;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--navy-650);
+      background: var(--blue-050);
+    }
+
+    .strength .index {
+      color: var(--blue-500);
+      font-size: 8pt;
+      font-weight: 800;
+    }
+
+    .strength h3 {
+      margin: 1px 0 6px;
+      color: var(--navy-950);
+      font-size: 9.6pt;
+      font-weight: 800;
+    }
+
+    .strength p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 8.5pt;
+      line-height: 1.55;
+    }
+
+    .strength p span {
+      display: block;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .strength p span::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--blue-500);
+    }
+
+    .strength p span + span { margin-top: 2px; }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .impact {
+      padding: 3.2mm 3.5mm;
+      border-right: 1px solid var(--line);
+    }
+
+    .impact:last-child { border-right: 0; }
+
+    .impact .metric {
+      color: var(--navy-800);
+      font-size: 15pt;
+      font-weight: 850;
+      line-height: 1;
+      letter-spacing: -.035em;
+    }
+
+    .impact .desc {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 7.9pt;
+      line-height: 1.35;
+    }
+
+    .lower-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 6mm;
+      margin-top: 4.5mm;
+    }
+
+    .career-section .lower-grid { margin-top: 0; }
+
+    .timeline {
+      border-top: 1px solid var(--navy-950);
+    }
+
+    .job {
+      display: grid;
+      grid-template-columns: 25mm 1fr;
+      gap: 5mm;
+      padding: 2.2mm 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .job .date {
+      color: var(--muted);
+      font-size: 7.7pt;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .job h3 {
+      margin: 0;
+      color: var(--navy-950);
+      font-size: 9.2pt;
+      font-weight: 800;
+    }
+
+    .job p {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 7.7pt;
+      line-height: 1.4;
+    }
+
+    .side-stack { display: grid; gap: 3.5mm; }
+
+    .info-box {
+      padding: 3.8mm;
+      background: var(--blue-100);
+    }
+
+    .info-box h3 {
+      margin-bottom: 3mm;
+      color: var(--navy-950);
+      font-size: 8.6pt;
+      font-weight: 850;
+      letter-spacing: .02em;
+    }
+
+    .info-box p,
+    .info-box li {
+      color: #435665;
+      font-size: 7.7pt;
+      line-height: 1.55;
+    }
+
+    .info-box ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .page-no {
+      position: absolute;
+      right: 15mm;
+      bottom: 6mm;
+      color: #82919d;
+      font-size: 7.5pt;
+      font-weight: 700;
+    }
+
+    /* Project page */
+    .project-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 12mm;
+      padding-bottom: 4.5mm;
+      border-bottom: 2px solid var(--navy-950);
+    }
+
+    .project-head h1 {
+      margin: 0;
+      color: var(--navy-950);
+      font-size: 21pt;
+      font-weight: 850;
+      line-height: 1.15;
+      letter-spacing: -.045em;
+    }
+
+    .project-meta {
+      color: var(--muted);
+      font-size: 8.5pt;
+      text-align: right;
+      line-height: 1.55;
+    }
+
+    .compact-project-head {
+      grid-template-columns: 1fr;
+    }
+
+    .compact-project-head::after { display: none; }
+
+    .project-profile-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 5mm;
+      align-items: start;
+      margin-top: 6mm;
+    }
+
+    .project-profile-image {
+      margin: 0;
+      width: 100%;
+      height: 45mm;
+      overflow: hidden;
+      border-radius: 2mm;
+      background: #eaf0f4;
+    }
+
+    .project-profile-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .project-profile-info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 6mm;
+      margin: 0;
+      border-top: 1px solid var(--navy-950);
+    }
+
+    .project-profile-row {
+      display: grid;
+      grid-template-columns: 24mm minmax(0, 1fr);
+      gap: 4mm;
+      padding: 2.2mm 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-profile-row dt {
+      color: var(--blue-500);
+      font-size: 7pt;
+      font-weight: 800;
+    }
+
+    .project-profile-row dd {
+      margin: 0;
+      color: var(--ink);
+      font-size: 8pt;
+      line-height: 1.5;
+    }
+
+    .project-profile-row-wide {
+      grid-column: 1 / -1;
+    }
+
+    .lead-block {
+      margin-top: 5mm;
+      padding: 4.5mm 5.5mm;
+      border-left: 4px solid var(--blue-500);
+      background: var(--blue-050);
+    }
+
+    .lead-block h2 {
+      margin-bottom: 2.5mm;
+      color: var(--navy-950);
+      font-size: 10.3pt;
+      font-weight: 850;
+    }
+
+    .lead-block p {
+      color: #3b4b58;
+      font-size: 8.5pt;
+      line-height: 1.55;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 3.5mm;
+      border: 1px solid var(--line);
+    }
+
+    .fact {
+      min-height: 16mm;
+      padding: 2.7mm 3.5mm;
+      border-right: 1px solid var(--line);
+    }
+
+    .fact:last-child { border-right: 0; }
+
+    .fact .k {
+      color: var(--muted);
+      font-size: 7.3pt;
+      font-weight: 700;
+    }
+
+    .fact .v {
+      margin-top: 3px;
+      color: var(--navy-950);
+      font-size: 8.9pt;
+      font-weight: 780;
+      line-height: 1.35;
+    }
+
+    .question-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4mm;
+    }
+
+    .question {
+      min-height: 25mm;
+      padding: 3.8mm;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .question .num {
+      color: var(--blue-500);
+      font-size: 8pt;
+      font-weight: 850;
+    }
+
+    .question p {
+      margin: 3px 0 0;
+      color: var(--navy-950);
+      font-size: 8.3pt;
+      font-weight: 740;
+      line-height: 1.55;
+    }
+
+    .actions { display: grid; gap: 2mm; }
+
+    .action {
+      display: grid;
+      grid-template-columns: 35mm 1fr;
+      border-top: 1px solid var(--line);
+      padding-top: 2.4mm;
+    }
+
+    .action h3 {
+      margin: 0;
+      color: var(--navy-800);
+      font-size: 8.2pt;
+      font-weight: 820;
+    }
+
+    .action p {
+      margin: 0;
+      color: #465661;
+      font-size: 7.9pt;
+      line-height: 1.48;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+    }
+
+    .result {
+      padding: 3.5mm;
+      background: var(--navy-950);
+      color: white;
+    }
+
+    .result strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #b8d6ea;
+      font-size: 8.4pt;
+    }
+
+    .result span {
+      display: block;
+      font-size: 7.7pt;
+      line-height: 1.5;
+    }
+
+    .reflection {
+      display: grid;
+      grid-template-columns: 35mm 1fr;
+      margin-top: 4.5mm;
+      border: 1px solid #b9ccda;
+      background: var(--blue-100);
+    }
+
+    .reflection h2 {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 3.8mm;
+      background: var(--navy-800);
+      color: white;
+      font-size: 9pt;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .reflection p {
+      padding: 3.8mm 5mm;
+      color: #344956;
+      font-size: 7.9pt;
+      line-height: 1.55;
+    }
+
+    /* Editorial redesign: fewer boxes, stronger reading hierarchy */
+    :root {
+      --navy-950: #101b27;
+      --navy-800: #1d3448;
+      --navy-650: #35566f;
+      --blue-500: #2f73b7;
+      --blue-100: #edf4f8;
+      --blue-050: #f7fafc;
+      --ink: #17212b;
+      --muted: #66727d;
+      --line: #d9dee2;
+      --paper: #fdfcf9;
+    }
+
+    .sheet {
+      padding: 12mm 16mm 11mm;
+      background:
+        linear-gradient(90deg, var(--blue-500) 0 3.2mm, transparent 3.2mm),
+        var(--paper);
+    }
+
+    .masthead {
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      padding: 0 0 7mm;
+      border-bottom: 1px solid var(--navy-950);
+    }
+
+    .masthead .eyebrow {
+      margin-bottom: 2mm;
+      color: var(--muted);
+      font-size: 7.4pt;
+      letter-spacing: .18em;
+    }
+
+    .name {
+      font-size: 28pt;
+      font-weight: 850;
+      letter-spacing: -.065em;
+    }
+
+    .role {
+      margin-top: 2.5mm;
+      color: var(--navy-650);
+      font-size: 9.4pt;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .contact {
+      gap: 2px;
+      padding-top: 1mm;
+      color: var(--muted);
+      font-size: 7.7pt;
+      line-height: 1.5;
+    }
+
+    .contact strong {
+      display: inline-block;
+      width: 14mm;
+      color: var(--navy-800);
+      font-size: 6.8pt;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      grid-template-columns: 1fr 40mm;
+      gap: 10mm;
+      padding: 8mm 0 6mm;
+    }
+
+    .hero .eyebrow {
+      margin-bottom: 2mm;
+      color: var(--blue-500);
+      font-size: 7.2pt;
+      letter-spacing: .13em;
+    }
+
+    .hero h2 {
+      max-width: none;
+      margin-bottom: 3mm;
+      font-size: 17.5pt;
+      line-height: 1.38;
+    }
+
+    .hero h2 span { color: var(--navy-950); }
+
+    .summary {
+      max-width: 126mm;
+      color: #3e4953;
+      font-size: 8.6pt;
+      line-height: 1.68;
+    }
+
+    .career-badge {
+      align-self: center;
+      min-height: 30mm;
+      padding: 0 0 0 6mm;
+      border-left: 1px solid var(--blue-500);
+      border-radius: 0;
+      background: transparent;
+      color: var(--navy-950);
+    }
+
+    .career-badge .number {
+      font-size: 18pt;
+      line-height: 1.1;
+      letter-spacing: -.055em;
+    }
+
+    .career-badge .label {
+      margin-top: 2mm;
+      color: var(--muted);
+      font-size: 7.2pt;
+      line-height: 1.4;
+    }
+
+    .section { margin-top: 5mm; }
+
+    .section-title {
+      gap: 3mm;
+      margin-bottom: 3mm;
+      color: var(--navy-950);
+      font-size: 9.2pt;
+      letter-spacing: -.015em;
+    }
+
+    .section-title::before {
+      width: 8mm;
+      height: 1px;
+      background: var(--blue-500);
+    }
+
+    .strengths {
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .strength {
+      min-height: 27mm;
+      padding: 4mm 6mm 4mm 0;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: transparent;
+    }
+
+    .strength + .strength { padding-left: 6mm; }
+    .strength:last-child { border-right: 0; }
+
+    .strength .index {
+      color: var(--blue-500);
+      font-size: 6.8pt;
+      letter-spacing: .08em;
+    }
+
+    .strength h3 {
+      margin: 1px 0 4px;
+      font-size: 9.4pt;
+    }
+
+    .strength p {
+      font-size: 7.7pt;
+      line-height: 1.5;
+    }
+
+    .impact-grid {
+      border: 0;
+      border-top: 1px solid var(--navy-950);
+      border-bottom: 1px solid var(--navy-950);
+      background: transparent;
+    }
+
+    .impact {
+      padding: 3.2mm 4mm 3.4mm 0;
+      border-right: 0;
+    }
+
+    .impact + .impact {
+      padding-left: 5mm;
+      border-left: 1px solid var(--line);
+    }
+
+    .impact .metric {
+      color: var(--blue-500);
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 14pt;
+      font-weight: 800;
+    }
+
+    .impact .desc {
+      margin-top: 3px;
+      font-size: 7pt;
+    }
+
+    .lower-grid {
+      grid-template-columns: 1.4fr .6fr;
+      gap: 9mm;
+      margin-top: 5.5mm;
+    }
+
+    .timeline { border-top: 1px solid var(--navy-950); }
+
+    .job {
+      grid-template-columns: 27mm 1fr;
+      padding: 2.3mm 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .job .date { font-size: 7pt; }
+
+    .job h3 {
+      font-size: 8.4pt;
+      font-weight: 790;
+    }
+
+    .job p {
+      color: var(--muted);
+      font-size: 7pt;
+    }
+
+    .side-stack { gap: 5mm; }
+
+    .info-box {
+      padding: 0 0 0 5mm;
+      border-left: 1px solid var(--blue-500);
+      background: transparent;
+    }
+
+    .info-box h3 {
+      margin-bottom: 2.5mm;
+      color: var(--blue-500);
+      font-size: 7.2pt;
+      letter-spacing: .1em;
+    }
+
+    .info-box p,
+    .info-box li {
+      color: #4f5d68;
+      font-size: 7.1pt;
+      line-height: 1.55;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-box li + li { margin-top: 1.6mm; }
+
+    .page-no {
+      right: 16mm;
+      bottom: 6mm;
+      font-size: 6.8pt;
+      letter-spacing: .08em;
+    }
+
+    /* Editorial project page */
+    .project-head {
+      position: relative;
+      align-items: start;
+      padding-bottom: 6mm;
+      border-bottom: 1px solid var(--navy-950);
+    }
+
+    .project-head::after {
+      content: "01";
+      position: absolute;
+      right: 0;
+      bottom: -3mm;
+      z-index: 0;
+      color: #e8edf0;
+      font-size: 45pt;
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .project-head > * { position: relative; z-index: 1; }
+
+    .project-head .eyebrow {
+      margin-bottom: 2mm;
+      color: var(--blue-500);
+      font-size: 7.2pt;
+      letter-spacing: .14em;
+    }
+
+    .project-head h1 {
+      font-size: 23pt;
+      letter-spacing: -.06em;
+    }
+
+    .project-meta {
+      padding-right: 17mm;
+      color: var(--muted);
+      font-size: 7.6pt;
+    }
+
+    .lead-block {
+      margin-top: 6mm;
+      padding: 0 0 0 6mm;
+      border-left: 2px solid var(--blue-500);
+      background: transparent;
+    }
+
+    .lead-block h2 {
+      margin-bottom: 1.5mm;
+      font-size: 9.2pt;
+    }
+
+    .lead-block p {
+      max-width: 160mm;
+      color: #3f4d58;
+      font-size: 8.3pt;
+      line-height: 1.6;
+    }
+
+    .facts {
+      margin-top: 5mm;
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fact {
+      min-height: 15mm;
+      padding: 2.6mm 4mm 2.6mm 0;
+      border-right: 0;
+    }
+
+    .fact + .fact {
+      padding-left: 4mm;
+      border-left: 1px solid var(--line);
+    }
+
+    .fact .k {
+      color: var(--blue-500);
+      font-size: 6.4pt;
+      letter-spacing: .09em;
+    }
+
+    .fact .v {
+      margin-top: 2px;
+      font-size: 7.8pt;
+      line-height: 1.4;
+    }
+
+    .question-list {
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .question {
+      min-height: 23mm;
+      padding: 3.6mm 5mm 3.6mm 0;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: transparent;
+    }
+
+    .question + .question { padding-left: 5mm; }
+    .question:last-child { border-right: 0; }
+
+    .question .num {
+      color: var(--blue-500);
+      font-size: 6.5pt;
+      letter-spacing: .08em;
+    }
+
+    .question p {
+      margin-top: 2px;
+      font-size: 8pt;
+      line-height: 1.5;
+    }
+
+    .actions { gap: 0; }
+
+    .action {
+      grid-template-columns: 38mm 1fr;
+      padding: 2.5mm 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .action:last-child { border-bottom: 1px solid var(--line); }
+
+    .action h3 {
+      color: var(--navy-950);
+      font-size: 7.9pt;
+    }
+
+    .action p {
+      color: #4b5862;
+      font-size: 7.6pt;
+      line-height: 1.5;
+    }
+
+    .result-grid {
+      gap: 0;
+      border-top: 1px solid var(--navy-950);
+      border-bottom: 1px solid var(--navy-950);
+    }
+
+    .result {
+      min-height: 20mm;
+      padding: 3.5mm 5mm 3.5mm 0;
+      border-right: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .result + .result { padding-left: 5mm; }
+    .result:last-child { border-right: 0; }
+
+    .result strong {
+      margin-bottom: 3px;
+      color: var(--blue-500);
+      font-size: 6.7pt;
+      letter-spacing: .07em;
+    }
+
+    .result span {
+      color: #394751;
+      font-size: 7.5pt;
+      line-height: 1.45;
+    }
+
+    .reflection {
+      grid-template-columns: 36mm 1fr;
+      margin-top: 5mm;
+      border: 0;
+      border-top: 1px solid var(--blue-500);
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+    }
+
+    .reflection h2 {
+      padding: 3.6mm 4mm 3.6mm 0;
+      background: transparent;
+      color: var(--navy-950);
+      font-size: 7.8pt;
+    }
+
+    .reflection p {
+      padding: 3.6mm 0 3.6mm 5mm;
+      border-left: 1px solid var(--line);
+      color: #46545f;
+      font-size: 7.5pt;
+      line-height: 1.55;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    .project-jump {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      width: 210mm;
+      margin: 0 auto 10px;
+      border: 1px solid #cfd8df;
+      background: rgba(253, 252, 249, .96);
+      box-shadow: 0 8px 24px rgba(16, 27, 39, .10);
+      backdrop-filter: blur(12px);
+    }
+
+    .project-jump-row {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      min-height: 12mm;
+      padding: 2mm 4mm;
+    }
+
+    .project-jump-title {
+      margin-right: auto;
+      color: var(--navy-950);
+      font-size: 7.4pt;
+      font-weight: 820;
+      letter-spacing: .04em;
+    }
+
+    .project-tab {
+      display: inline-flex;
+      align-items: center;
+      min-height: 7mm;
+      padding: 1.4mm 3mm;
+      border: 1px solid transparent;
+      border-radius: 99px;
+      color: var(--muted);
+      font-size: 7pt;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .project-tab:hover {
+      border-color: #cbd8e2;
+      color: var(--navy-950);
+    }
+
+    .project-tab.active {
+      border-color: var(--blue-500);
+      background: var(--blue-500);
+      color: white;
+    }
+
+    .project-jump-rail {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: #e3e8ec;
+    }
+
+    .project-jump-fill {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--blue-500);
+      transition: width .24s ease;
+    }
+
+    .project-sheet { scroll-margin-top: 18mm; }
+
+    .project-sheet .project-head::after {
+      content: attr(data-project);
+    }
+
+    .project-sequence {
+      margin-top: 2.5mm;
+    }
+
+    .project-sequence-label {
+      color: var(--blue-500);
+      font-size: 6.3pt;
+      font-weight: 800;
+      letter-spacing: .09em;
+    }
+
+    .project-sequence-dots {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.2mm;
+      margin-top: 1.2mm;
+    }
+
+    .project-sequence-dots i {
+      display: block;
+      width: 4mm;
+      height: 1.2mm;
+      background: #d8e0e6;
+    }
+
+    .project-sequence-dots i.done { background: #8eb8d7; }
+    .project-sequence-dots i.current { background: var(--blue-500); }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      html, body { background: white; }
+      body { padding: 0; }
+      .project-jump { display: none; }
+      .project-side-index,
+      .page-controls,
+      .page-arrow { display: none; }
+      .sheet {
+        width: 210mm;
+        height: 297mm;
+        min-height: 297mm;
+        margin: 0;
+        box-shadow: none;
+        break-after: auto;
+        page-break-after: auto;
+      }
+      .sheet + .sheet {
+        break-before: page;
+        page-break-before: always;
+      }
+    }
+
+    @media screen and (max-width: 860px) {
+      body { padding: 0; }
+      .sheet {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 28px 22px 44px;
+        box-shadow: none;
+      }
+      .masthead,
+      .hero,
+      .project-head,
+      .lower-grid { grid-template-columns: 1fr; }
+      .contact,
+      .project-meta { text-align: left; }
+      .strengths,
+      .question-list,
+      .result-grid { grid-template-columns: 1fr; }
+      .impact-grid,
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .impact:nth-child(2),
+      .fact:nth-child(2) { border-right: 0; }
+      .impact:nth-child(-n+2),
+      .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .action,
+      .reflection { grid-template-columns: 1fr; }
+      .project-jump {
+        position: relative;
+        width: 100%;
+        margin: 0;
+      }
+      .project-jump-row {
+        flex-wrap: wrap;
+      }
+      .project-jump-title {
+        width: 100%;
+      }
+    }
+
+    /* Web-first layout: continuous portfolio rather than A4 sheets */
+    @media screen {
+      :root {
+        --type-meta: 12px;
+        --type-body: 15px;
+        --type-heading: 18px;
+        --type-emphasis: 24px;
+        --page-arrow-top: 68%;
+      }
+
+      html, body {
+        background: #f3f5f7;
+        font-size: var(--type-body);
+        line-height: 1.65;
+      }
+
+      body { padding: 0; }
+
+      .project-jump {
+        width: 100%;
+        margin: 0;
+        border: 0;
+        border-bottom: 1px solid rgba(217, 222, 226, .9);
+        background: rgba(255, 255, 255, .92);
+        box-shadow: 0 8px 28px rgba(16, 27, 39, .07);
+      }
+
+      .project-jump-row {
+        width: min(980px, calc(100% - 40px));
+        min-height: 64px;
+        margin: 0 auto;
+        padding: 10px 0;
+      }
+
+      .project-jump-title { font-size: 13px; }
+
+      .project-tab {
+        min-height: 36px;
+        padding: 7px 14px;
+        font-size: 12px;
+      }
+
+      .right-rail {
+        position: fixed;
+        top: 92px;
+        right: max(18px, calc((100vw - 980px) / 2 - 174px));
+        z-index: 17;
+        display: grid;
+        width: 150px;
+        gap: 10px;
+      }
+
+      .project-side-index {
+        display: grid;
+        width: 100%;
+        max-height: calc(100vh - 190px);
+        padding: 14px 0;
+        overflow-y: auto;
+        border-top: 1px solid var(--navy-950);
+        border-bottom: 1px solid var(--line);
+        background: rgba(243, 245, 247, .9);
+      }
+
+      .right-rail .page-arrow {
+        position: fixed;
+        top: var(--page-arrow-top);
+        right: max(14px, calc((100vw - 980px) / 2 - 46px));
+        z-index: 18;
+        width: 36px;
+        height: 42px;
+        border: 1px solid rgba(47, 115, 183, .35);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, .84);
+        box-shadow: none;
+        color: var(--blue-500);
+        font-size: 28px;
+        transform: translateY(-50%);
+      }
+
+      .right-rail .page-arrow:hover:not(:disabled) {
+        border-color: #d8e5ef;
+        background: #f3f8fc;
+        color: var(--blue-500);
+        transform: translateY(-50%) translateX(2px);
+      }
+
+      .project-side-heading {
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .08em;
+      }
+
+      .project-side-link {
+        display: grid;
+        grid-template-columns: 24px minmax(0, 1fr);
+        gap: 8px;
+        align-items: start;
+        width: 100%;
+        padding: 8px 0;
+        border: 0;
+        background: transparent;
+        color: #4f5d68;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .project-side-link:hover:not(:disabled),
+      .project-side-link.active {
+        color: var(--blue-500);
+      }
+
+      .project-side-link.active { font-weight: 800; }
+      .project-side-link:disabled { opacity: .38; cursor: default; }
+
+      .project-side-number {
+        color: inherit;
+        font-size: 11px;
+        font-weight: 850;
+      }
+
+      .project-side-label {
+        color: inherit;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      .page-controls {
+        display: contents;
+      }
+
+      .page-controls .page-arrow {
+        position: fixed;
+        top: var(--page-arrow-top);
+        width: 36px;
+        height: 42px;
+        border: 1px solid rgba(47, 115, 183, .35);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, .84);
+        box-shadow: none;
+        color: var(--blue-500);
+        font-size: 28px;
+        transform: translateY(-50%);
+      }
+
+      .page-controls .page-arrow:hover:not(:disabled) {
+        border-color: #d8e5ef;
+        background: #f3f8fc;
+        color: var(--blue-500);
+        transform: translateY(-50%) translateX(2px);
+      }
+
+      .page-controls .page-arrow.prev:hover:not(:disabled) { transform: translateY(-50%) translateX(-2px); }
+      .page-controls .page-arrow span { transform: translateY(-1px); }
+
+      main {
+        width: min(980px, 100%);
+        min-height: calc(100vh - 64px);
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 24px 80px rgba(16, 27, 39, .08);
+      }
+
+      .sheet {
+        display: none;
+        width: 100%;
+        min-height: calc(100vh - 64px);
+        margin: 0;
+        padding: 80px 56px 88px;
+        overflow: visible;
+        background: white;
+        box-shadow: none;
+        border-bottom: 1px solid #e1e6ea;
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      .sheet.active-page {
+        display: block;
+        animation: page-in .28s ease both;
+      }
+
+      @keyframes page-in {
+        from { opacity: 0; transform: translateX(12px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      .page-arrow {
+        position: fixed;
+        top: 50%;
+        z-index: 18;
+        display: grid;
+        width: 52px;
+        height: 52px;
+        place-items: center;
+        border: 1px solid #d5dde3;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, .94);
+        box-shadow: 0 10px 30px rgba(16, 27, 39, .14);
+        color: var(--navy-800);
+        font-size: 23px;
+        cursor: pointer;
+        transform: translateY(-50%);
+        transition: color .18s ease, border-color .18s ease, transform .18s ease, opacity .18s ease;
+      }
+
+      .page-arrow:hover:not(:disabled) {
+        border-color: var(--blue-500);
+        color: var(--blue-500);
+        transform: translateY(-50%) scale(1.05);
+      }
+
+      .page-arrow:focus-visible {
+        outline: 3px solid rgba(47, 115, 183, .25);
+        outline-offset: 3px;
+      }
+
+      .page-arrow:disabled {
+        opacity: .25;
+        cursor: default;
+      }
+
+      .page-arrow.prev {
+        left: max(14px, calc((100vw - 980px) / 2 - 46px));
+      }
+
+      .sheet:last-child { border-bottom: 0; }
+      .project-sheet:nth-of-type(odd) { background: #f8fafb; }
+      .page-no { display: none; }
+
+      .masthead {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: center;
+        column-gap: 24px;
+        row-gap: 0;
+        padding-bottom: 26px;
+      }
+      .masthead .eyebrow { font-size: 12px; }
+      .name { font-size: 58px; }
+      .role { margin-top: 8px; font-size: 17px; }
+
+      .identity-block {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .identity-details {
+        display: flex;
+        flex: 1 1 auto;
+        min-width: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .profile-photo {
+        flex: 0 0 128px;
+        width: 128px;
+        height: 160px;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+      }
+
+      .profile-photo span {
+        font-size: 11px;
+        letter-spacing: .04em;
+      }
+
+      .profile-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: inherit;
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        gap: 8px 18px;
+        width: auto;
+        min-width: 0;
+        margin-top: 8px;
+        padding: 0;
+        border: 0;
+        font-size: 11px;
+      }
+
+      .contact span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+      }
+
+      .contact-icon {
+        font-style: normal;
+        font-size: 11px;
+        line-height: 1;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 24px 0 0;
+      }
+
+      .hero > div {
+        padding-left: 16px;
+      }
+
+      .hero .eyebrow { font-size: 11px; }
+
+      .hero h2 {
+        margin-bottom: 16px;
+        font-size: clamp(34px, 4vw, 48px);
+        line-height: 1.22;
+      }
+
+      .summary {
+        max-width: 720px;
+        margin-left: 12px;
+        padding-left: 24px;
+        border-left: 2px solid var(--blue-500);
+        font-size: 17px;
+        line-height: 1.85;
+      }
+
+      .summary-line { display: block; }
+
+      .masthead .career-badge {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 8px;
+        align-self: auto;
+        justify-content: flex-start;
+        width: fit-content;
+        min-height: 0;
+        margin-top: 16px;
+        padding: 0;
+        border-left: 0;
+        border-right: 0;
+        text-align: left;
+      }
+
+      .masthead .career-badge .number { font-weight: 850; }
+      .masthead .career-badge .label { margin-top: 0; }
+
+      .section { margin-top: 48px; }
+
+      .capability-section { margin-top: 32px; }
+
+      .section-title {
+        position: relative;
+        display: block;
+        margin-bottom: 0;
+        padding: 0 0 14px;
+        border-bottom: 1px solid var(--navy-950);
+        font-size: 20px;
+      }
+
+      .section-title::before {
+        content: none;
+      }
+
+      .section-note {
+        margin: -14px 0 18px;
+        font-size: var(--type-meta);
+        font-weight: 700;
+      }
+
+      .strength {
+        min-height: 156px;
+        padding: 26px 24px 26px 0;
+      }
+
+      .strength + .strength { padding-left: 24px; }
+      .strength .index { font-size: 11px; }
+      .strength h3 {
+        min-height: 58px;
+        margin: 4px 0 12px;
+      }
+      .strength p { font-size: 15px; line-height: 1.65; }
+
+      .capability-layout {
+        display: block;
+      }
+
+      .capability-layout .strengths {
+        grid-template-columns: minmax(0, 1fr);
+        border-top: 0;
+      }
+
+      .capability-layout .strength,
+      .capability-layout .strength + .strength {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        align-items: start;
+        min-height: 0;
+        padding: 22px 0;
+        border: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        background: transparent;
+      }
+
+      .capability-layout .strength + .strength { padding-left: 0; }
+      .capability-layout .strength:last-child { border-right: 0; }
+      .strength-title {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 0;
+      }
+
+      .capability-layout .strength .index {
+        display: grid;
+        flex: 0 0 32px;
+        width: 32px;
+        height: 32px;
+        place-items: center;
+        border: 1px solid #c5d9e8;
+        border-radius: 50%;
+        background: var(--blue-050);
+        letter-spacing: 0;
+      }
+
+      .capability-layout .strength h3 {
+        min-height: 0;
+        margin: 0;
+      }
+      .capability-layout .strength p {
+        max-width: 780px;
+        margin: 10px 0 0;
+        padding-left: 46px;
+      }
+
+      .capability-layout .strength p span {
+        display: block;
+      }
+
+      .capability-layout .strength p span + span {
+        margin-top: 2px;
+      }
+
+      .principles-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px 28px;
+        border-left: 2px solid var(--blue-500);
+        background: var(--blue-050);
+      }
+
+      .principles-kicker {
+        margin-bottom: 22px;
+        font-size: 12px;
+      }
+
+      .principle-list { gap: 22px; }
+
+      .principle-list li {
+        grid-template-columns: 28px 1fr;
+        gap: 8px;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      .principle-list strong { font-size: 11px; }
+
+      .career-content { display: grid; }
+
+      .timeline {
+        position: relative;
+        padding-left: 34px;
+        border-top: 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 30px;
+        bottom: 30px;
+        left: 8px;
+        width: 1px;
+        background: #cbd5dc;
+      }
+
+      .career-notes {
+        display: grid;
+        grid-template-columns: minmax(250px, .7fr) minmax(0, 1.3fr);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .career-note {
+        display: grid;
+        grid-template-columns: 78px 1fr;
+        gap: 14px;
+        min-height: 68px;
+        padding: 18px 22px 18px 0;
+        align-items: baseline;
+      }
+
+      .career-note + .career-note {
+        padding-left: 24px;
+        border-left: 1px solid var(--line);
+      }
+
+      .career-note strong {
+        color: var(--blue-500);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: .06em;
+      }
+
+      .career-note p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .impact { padding: 22px 20px 22px 0; }
+      .impact + .impact { padding-left: 20px; }
+      .impact .metric { font-size: 30px; }
+      .impact .desc { margin-top: 8px; font-size: 13px; }
+
+      .project-overview {
+        border-top: 0;
+      }
+
+      .project-archive {
+        border-top: 1px solid var(--navy-950);
+      }
+
+      .project-archive-item {
+        display: grid;
+        grid-template-columns: 38px 92px minmax(0, 1fr);
+        column-gap: 14px;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .project-archive-index {
+        color: var(--blue-500);
+        font-size: var(--type-meta);
+        font-weight: 850;
+        letter-spacing: .08em;
+      }
+
+      .project-archive-thumb {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        width: 92px;
+        height: 58px;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 6px;
+        background: #edf2f5;
+      }
+
+      .project-archive-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .project-archive h3 {
+        margin: 0;
+        color: var(--navy-950);
+        font-size: var(--type-body);
+        line-height: 1.5;
+      }
+
+      .project-archive h3 a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .project-archive-title-row {
+        position: relative;
+        display: block;
+        padding-right: 220px;
+      }
+
+      .project-archive-period {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: var(--muted);
+        font-size: var(--type-meta);
+        font-weight: 400;
+        white-space: nowrap;
+        text-align: right;
+        line-height: 1.2;
+      }
+
+      .project-archive-period span { display: block; }
+
+      .project-archive-tenure {
+        margin-top: 1px;
+        color: #7a8792;
+      }
+
+      .project-archive-item > div { grid-column: 3; }
+
+      .project-archive-meta {
+        margin: 0;
+        color: var(--muted);
+        font-size: var(--type-meta);
+        line-height: 1.6;
+      }
+
+      .project-archive-details {
+        grid-column: 3;
+        display: grid;
+        grid-template-columns: 175px minmax(0, 1fr);
+        gap: 3px 16px;
+        align-items: baseline;
+        margin: 0;
+        color: #3f4c56;
+        font-size: var(--type-meta);
+        line-height: 1.6;
+      }
+
+      .project-archive-details span { white-space: nowrap; }
+
+      .project-archive-details b {
+        margin-right: 6px;
+        color: var(--blue-500);
+        font-size: var(--type-meta);
+        font-weight: 850;
+      }
+
+      .project-summary {
+        display: grid;
+        grid-template-columns: minmax(210px, 240px) minmax(0, 1fr);
+        gap: 32px;
+        align-items: start;
+        padding: 32px 0 36px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .project-summary-identity {
+        min-width: 0;
+        text-align: center;
+      }
+
+      .project-summary-thumb {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        margin: 0;
+        overflow: hidden;
+        border: 1px dashed #b8c8d4;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #eaf2f7, #f8fafb);
+        color: #7b8994;
+      }
+
+      .project-summary-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .project-summary-thumb span {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 12px;
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .project-summary h3 {
+        margin: 0 0 6px;
+        color: var(--navy-950);
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      .project-summary-content {
+        min-width: 0;
+        padding-top: 2px;
+      }
+
+      .project-summary-meta {
+        margin: 0 0 12px;
+        padding-right: 0;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.75;
+      }
+
+      .project-summary-result {
+        margin: 0;
+        color: #3f4c56;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .project-summary-result + .project-summary-result {
+        margin-top: 7px;
+      }
+
+      .project-summary-result::before {
+        content: "•";
+        margin-right: 10px;
+        color: var(--blue-500);
+        font-weight: 850;
+      }
+
+      .other-projects {
+        margin-top: 42px;
+      }
+
+      .other-projects-title {
+        margin: 0;
+        padding: 0 0 14px;
+        border-bottom: 1px solid var(--navy-950);
+        color: var(--navy-950);
+        font-size: var(--type-heading);
+        line-height: 1.45;
+      }
+
+      .other-project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .other-project {
+        min-height: 152px;
+        padding: 24px 26px 24px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .other-project:nth-child(even) {
+        padding-right: 0;
+        padding-left: 26px;
+        border-left: 1px solid var(--line);
+      }
+
+      .other-project h3 {
+        margin: 0 0 8px;
+        color: var(--navy-950);
+        font-size: var(--type-body);
+        line-height: 1.45;
+      }
+
+      .other-project-meta {
+        margin: 0 0 10px;
+        color: var(--navy-950);
+        font-size: var(--type-meta);
+        font-weight: 700;
+        line-height: 1.6;
+      }
+
+      .other-project-desc {
+        margin: 0;
+        color: var(--navy-950);
+        font-size: var(--type-body);
+        line-height: 1.65;
+      }
+
+      .other-project-desc span {
+        display: block;
+        position: relative;
+        padding-left: 16px;
+      }
+
+      .other-project-desc span::before {
+        content: "•";
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--blue-500);
+        font-weight: 850;
+      }
+
+      .other-project-desc span + span {
+        margin-top: 2px;
+      }
+
+      .lower-grid {
+        grid-template-columns: minmax(0, 1.5fr) minmax(250px, .5fr);
+        gap: 42px;
+        margin-top: 34px;
+      }
+
+      .job {
+        position: relative;
+        display: block;
+        padding: 24px 0 26px;
+      }
+
+      .job::before {
+        content: "";
+        position: absolute;
+        top: 31px;
+        left: -30px;
+        width: 10px;
+        height: 10px;
+        box-sizing: border-box;
+        border: 2px solid var(--blue-500);
+        border-radius: 50%;
+        background: white;
+      }
+
+      .job-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: baseline;
+        gap: 24px;
+      }
+
+      .job-title-line {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 8px;
+      }
+
+      .job-title-line .company {
+        font-size: var(--type-heading);
+        font-weight: 850;
+      }
+
+      .job-title-line .divider {
+        font-size: var(--type-body);
+        font-weight: 400;
+      }
+
+      .job-title-line .employment {
+        font-size: var(--type-body);
+        font-weight: 600;
+      }
+
+      .job .date {
+        flex: 0 0 auto;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .job .date span { display: block; }
+      .job .tenure {
+        display: block;
+        margin-left: 0;
+        font-weight: 400;
+      }
+
+      .job h3 {
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .job .job-focus {
+        margin: 1px 0 0;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.65;
+        color: var(--navy-950);
+      }
+
+      .job .job-focus span {
+        display: block;
+      }
+
+      .job .job-focus span::before {
+        content: "•";
+        margin-right: 10px;
+        color: var(--blue-500);
+      }
+
+      .job-scope {
+        display: grid;
+        gap: 5px;
+        margin: 10px 0 0;
+        padding-left: 20px;
+      }
+
+      .job-scope li { line-height: 1.65; }
+      .job-scope li::marker { color: var(--blue-500); }
+      .job-scope strong { margin-right: 8px; }
+
+      .job-projects {
+        font-size: inherit;
+        font-weight: 400;
+      }
+
+      .side-stack { gap: 44px; }
+
+      .info-box {
+        padding-left: 22px;
+      }
+
+      .info-box h3 { margin-bottom: 16px; font-size: 12px; }
+      .info-box p, .info-box li { font-size: 14px; line-height: 1.7; }
+      .info-box li + li { margin-top: 10px; }
+
+      .project-sheet { scroll-margin-top: 64px; }
+
+      .project-head {
+        padding-bottom: 42px;
+      }
+
+      .compact-project-head { padding-bottom: 22px; }
+
+      .project-profile-card {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-top: 32px;
+      }
+
+      .project-profile-image {
+        width: 100%;
+        height: 210px;
+        border-radius: 10px;
+      }
+
+      .project-profile-row {
+        grid-template-columns: 80px minmax(0, 1fr);
+        gap: 16px;
+        padding: 9px 0;
+      }
+
+      .project-profile-row dt { font-size: 11px; }
+      .project-profile-row dd { font-size: 14px; line-height: 1.55; }
+
+      #project-01 .lead-block { margin-top: 36px; }
+
+      #project-01 .question-list,
+      #project-01 .result-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      #project-01 .action {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      #project-01 .result {
+        min-height: 0;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+        border-radius: 0;
+        background: transparent;
+        color: #111;
+      }
+
+      #project-01 .result + .result { padding-left: 0; }
+      #project-01 .result strong { color: #111; }
+      #project-01 .result span { color: #111; }
+      #project-01 .reflection { grid-template-columns: 1fr; }
+
+      .project-head::after {
+        right: 0;
+        bottom: -10px;
+        font-size: 112px;
+      }
+
+      .project-head .eyebrow { font-size: 12px; }
+      .project-head h1 { font-size: 50px; }
+
+      .project-meta {
+        padding-right: 100px;
+        font-size: 14px;
+      }
+
+      .project-sequence { margin-top: 14px; }
+      .project-sequence-label { font-size: 11px; }
+      .project-sequence-dots { gap: 6px; margin-top: 7px; }
+      .project-sequence-dots i { width: 22px; height: 5px; }
+
+      .lead-block {
+        max-width: 820px;
+        margin-top: 54px;
+        padding-left: 28px;
+      }
+
+      .lead-block h2 { margin-bottom: 10px; font-size: 20px; }
+      .lead-block p { max-width: 780px; font-size: 16px; line-height: 1.75; }
+
+      .project-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 36px;
+        align-items: stretch;
+        margin-top: 54px;
+      }
+
+      .project-intro .lead-block {
+        max-width: none;
+        margin-top: 0;
+      }
+
+      .project-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        margin: 32px 0 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background:
+          linear-gradient(135deg, rgba(47, 115, 183, .08), rgba(255, 255, 255, .8)),
+          #f5f8fa;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      .project-visual strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--navy-800);
+        font-size: 15px;
+      }
+
+      .project-visual span {
+        display: block;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .project-visual img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+      }
+
+      .facts {
+        margin-top: 42px;
+        padding: 22px 0;
+      }
+
+      .fact {
+        min-height: 82px;
+        padding: 10px 24px 10px 0;
+      }
+
+      .fact + .fact { padding-left: 24px; }
+      .fact .k { font-size: 10px; }
+      .fact .v { margin-top: 7px; font-size: 15px; }
+
+      .question-list {
+        gap: 18px;
+        border: 0;
+      }
+
+      .question {
+        min-height: 150px;
+        padding: 26px;
+        border: 1px solid #e0e7ec;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, .75);
+      }
+
+      .question + .question { padding-left: 26px; }
+      .question:last-child { border-right: 1px solid #e0e7ec; }
+      .question .num { font-size: 10px; }
+      .question p { margin-top: 10px; font-size: 16px; line-height: 1.55; }
+
+      .action {
+        grid-template-columns: 180px 1fr;
+        gap: 32px;
+        padding: 22px 0;
+      }
+
+      .action h3 { font-size: 15px; }
+      .action p { font-size: 15px; line-height: 1.7; }
+
+      .result-grid {
+        gap: 14px;
+        border: 0;
+      }
+
+      .result {
+        min-height: 150px;
+        padding: 26px;
+        border: 0;
+        border-radius: 14px;
+        background: var(--navy-950);
+        color: white;
+      }
+
+      .result + .result { padding-left: 26px; }
+      .result:last-child { border-right: 0; }
+      .result strong { margin-bottom: 10px; font-size: 11px; }
+      .result span { color: white; font-size: 15px; line-height: 1.6; }
+
+      .reflection {
+        grid-template-columns: 190px 1fr;
+        margin-top: 46px;
+        border: 0;
+        border-radius: 14px;
+        background: var(--blue-100);
+        overflow: hidden;
+      }
+
+      .reflection h2 {
+        padding: 30px;
+        background: var(--navy-800);
+        color: white;
+        font-size: 15px;
+      }
+
+      .reflection p {
+        padding: 28px 32px;
+        border-left: 0;
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      /* 글자는 검은색으로 통일하고 파란색은 선과 버튼 같은 시각 요소에만 사용 */
+      .sheet,
+      .sheet * {
+        color: #111;
+      }
+
+      .project-jump-title,
+      .project-tab,
+      .page-arrow {
+        color: #111;
+      }
+
+      .project-tab.active,
+      .sheet .result,
+      .sheet .result *,
+      .sheet .reflection h2 {
+        color: white;
+      }
+
+      /* 웹 화면 타이포그래피: 5단계만 사용 */
+      .project-jump-title,
+      .contact,
+      .contact-icon,
+      .profile-photo span,
+      .hero .eyebrow,
+      .project-head .eyebrow,
+      .strength .index,
+      .career-columns,
+      .job .tenure,
+      .project-summary-thumb span,
+      .project-summary-meta,
+      .project-sequence-label,
+      .fact .k,
+      .question .num,
+      .result strong {
+        font-size: var(--type-meta);
+      }
+
+      .project-tab,
+      .masthead .career-badge .label,
+      .job .date,
+      .impact .desc,
+      .project-meta,
+      .project-visual span {
+        font-size: var(--type-meta);
+      }
+
+      .summary,
+      .masthead .career-badge .number,
+      .strength h3,
+      .strength p,
+      .job h3,
+      .job p,
+      .project-summary-result,
+      .lead-block p,
+      .fact .v,
+      .question p,
+      .action p,
+      .result span,
+      .reflection p {
+        font-size: var(--type-body);
+      }
+
+      .role,
+      .project-summary h3,
+      .project-visual strong,
+      .action h3,
+      .reflection h2 {
+        font-size: var(--type-heading);
+      }
+
+      .section-title,
+      .lead-block h2,
+      .page-arrow {
+        font-size: var(--type-heading);
+      }
+
+      .impact .metric {
+        font-size: var(--type-emphasis);
+      }
+
+      .name {
+        font-size: var(--type-emphasis);
+      }
+
+      .hero h2,
+      .project-head h1,
+      .project-head::after {
+        font-size: var(--type-emphasis);
+      }
+
+      /* 프로젝트 상세 페이지 타이포그래피: 24 / 18 / 15 / 12px */
+      .project-sheet .project-head h1 {
+        font-size: var(--type-emphasis);
+        line-height: 1.3;
+      }
+
+      .project-sheet .section-title,
+      .project-sheet .lead-block h2,
+      .project-sheet .reflection h2 {
+        font-size: var(--type-heading);
+        line-height: 1.45;
+      }
+
+      .project-sheet .project-profile-row dd,
+      .project-sheet .lead-block p,
+      .project-sheet .question p,
+      .project-sheet .action h3,
+      .project-sheet .action p,
+      .project-sheet .result span,
+      .project-sheet .reflection p {
+        font-size: var(--type-body);
+        line-height: 1.7;
+      }
+
+      .project-sheet .project-head .eyebrow,
+      .project-sheet .project-profile-row dt,
+      .project-sheet .question .num,
+      .project-sheet .result strong {
+        font-size: var(--type-meta);
+        line-height: 1.5;
+      }
+    }
+
+    @media screen and (min-width: 901px) and (max-width: 1280px) {
+      .right-rail {
+        right: 18px;
+        width: 44px;
+      }
+
+      .project-side-index {
+        width: 44px;
+        align-items: center;
+      }
+
+      .right-rail .page-arrow { justify-self: center; }
+
+      .project-side-heading,
+      .project-side-label { display: none; }
+
+      .project-side-link {
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center;
+        padding: 9px 0;
+      }
+
+      .project-side-number { font-size: 12px; }
+    }
+
+    @media screen and (max-width: 900px) {
+      .project-jump-row {
+        width: 100%;
+        flex-wrap: nowrap;
+        gap: 6px;
+        padding: 10px 16px;
+        overflow-x: auto;
+      }
+
+      .project-jump-title { display: none; }
+      .project-tab { flex: 0 0 auto; }
+      .right-rail {
+        top: 50%;
+        right: 10px;
+        width: 36px;
+        transform: translateY(-50%);
+      }
+
+      .project-side-index { display: none; }
+      .right-rail .page-arrow { justify-self: center; }
+
+      .page-arrow {
+        width: 42px;
+        height: 42px;
+        font-size: var(--type-heading);
+      }
+
+      .page-arrow.prev { left: 10px; }
+
+      .right-rail .page-arrow {
+        position: static;
+        top: auto;
+        right: auto;
+        transform: none;
+      }
+
+      .right-rail .page-arrow:hover:not(:disabled) { transform: translateX(2px); }
+
+      main { width: 100%; box-shadow: none; }
+
+      .sheet {
+        padding: 56px 24px 68px;
+      }
+
+      .masthead,
+      .hero,
+      .project-head,
+      .lower-grid { grid-template-columns: 1fr; }
+
+      .identity-block {
+        align-items: center;
+        gap: 18px;
+      }
+
+      .profile-photo {
+        flex-basis: 96px;
+        width: 96px;
+        height: 120px;
+      }
+
+      .name { font-size: var(--type-emphasis); }
+
+      .masthead .career-badge {
+        align-items: flex-start;
+        padding: 0;
+        border-right: 0;
+        border-bottom: 0;
+        text-align: left;
+      }
+
+      .contact,
+      .project-meta { margin-top: 24px; text-align: left; }
+
+      .contact {
+        grid-column: auto;
+        justify-content: flex-start;
+        gap: 8px 14px;
+        margin-top: 8px;
+      }
+
+      .hero { gap: 24px; padding: 24px 0 0; }
+      .hero > div { padding-left: 10px; }
+      .hero .summary { margin-left: 0; padding-left: 18px; }
+      .hero h2 { font-size: var(--type-emphasis); }
+      .career-badge { min-height: 0; }
+      .summary-line { display: inline; }
+
+      .job {
+        padding: 20px 0;
+      }
+
+      .timeline { padding-left: 28px; }
+      .timeline::before { top: 25px; bottom: 25px; left: 7px; }
+      .job::before { top: 25px; left: -26px; }
+
+      .job-head {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .job .date {
+        margin-bottom: 4px;
+        text-align: left;
+      }
+
+      .strengths,
+      .question-list,
+      .result-grid { grid-template-columns: 1fr; }
+
+      .strength,
+      .strength + .strength {
+        min-height: 0;
+        padding: 24px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .capability-layout { grid-template-columns: 1fr; }
+
+      .capability-layout .strengths { grid-template-columns: 1fr; }
+
+      .capability-layout .strength,
+      .capability-layout .strength + .strength {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        min-height: 0;
+        padding: 24px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .capability-layout .strength:last-child { border-bottom: 0; }
+      .capability-layout .strength h3,
+      .capability-layout .strength p { min-height: 0; }
+
+      .principles-panel {
+        padding: 26px 24px;
+        border-left-width: 1px;
+      }
+
+      .career-notes { grid-template-columns: 1fr; }
+
+      .career-note,
+      .career-note + .career-note {
+        grid-template-columns: 72px 1fr;
+        padding: 16px 0;
+        border-left: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .impact-grid,
+      .facts { grid-template-columns: repeat(2, 1fr); }
+
+      .project-summary {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 24px 0 28px;
+      }
+
+      .project-summary-identity,
+      .project-summary-content {
+        grid-column: 1;
+      }
+
+      .project-summary-thumb {
+        width: min(100%, 320px);
+      }
+
+      .project-summary-identity { width: min(100%, 320px); }
+      .project-summary-content h3,
+      .project-summary-content .project-summary-meta { padding-right: 0; }
+
+      .other-project-grid { grid-template-columns: 1fr; }
+
+      .other-project,
+      .other-project:nth-child(even) {
+        min-height: 0;
+        padding: 22px 0;
+        border-left: 0;
+      }
+
+      .impact:nth-child(2),
+      .fact:nth-child(2) { border-right: 0; }
+
+      .project-head::after { font-size: var(--type-emphasis); }
+      .project-head h1 { font-size: var(--type-emphasis); }
+      .project-meta { padding-right: 0; }
+
+      .project-intro {
+        grid-template-columns: 1fr;
+      }
+
+      .project-profile-card { grid-template-columns: 1fr; }
+
+      .project-profile-info { grid-template-columns: 1fr; }
+
+      .project-profile-image { width: 100%; height: 180px; }
+
+      .project-profile-row {
+        grid-template-columns: 72px minmax(0, 1fr);
+      }
+
+      .project-visual { min-height: 0; }
+
+      .question,
+      .question + .question { padding: 24px; }
+
+      .action,
+      .reflection { grid-template-columns: 1fr; }
+
+      .reflection p { padding: 24px; }
+    }
+
+    #project-01 .project-head-summary,
+    #project-02 .project-head-summary,
+    #project-03 .project-head-summary {
+      max-width: 780px;
+      margin: 16px 0 0;
+      color: #46545f;
+      font-size: var(--type-body);
+      line-height: 1.75;
+    }
+
+    #project-01 .project-profile-card,
+    #project-02 .project-profile-card,
+    #project-03 .project-profile-card {
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    #project-01 .project-profile-image,
+    #project-02 .project-profile-image,
+    #project-03 .project-profile-image {
+      height: 260px;
+    }
+
+    #project-01 .project-profile-row dt,
+    #project-01 .project-profile-row dd,
+    #project-02 .project-profile-row dt,
+    #project-02 .project-profile-row dd,
+    #project-03 .project-profile-row dt,
+    #project-03 .project-profile-row dd {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    #project-01 .responsibility-lines span,
+    #project-02 .responsibility-lines span,
+    #project-03 .responsibility-lines span {
+      display: block;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    #project-01 .responsibility-lines span::before,
+    #project-02 .responsibility-lines span::before,
+    #project-03 .responsibility-lines span::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--blue-500);
+      font-weight: 900;
+    }
+
+    #project-01 .core-challenges,
+    #project-02 .core-challenges,
+    #project-03 .core-challenges {
+      border-top: 1px solid var(--navy-950);
+    }
+
+    #project-01 .challenge-case,
+    #project-02 .challenge-case,
+    #project-03 .challenge-case {
+      padding: 30px 0;
+    }
+
+    #project-01 .challenge-case-head,
+    #project-02 .challenge-case-head,
+    #project-03 .challenge-case-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    #project-01 .challenge-case-index,
+    #project-02 .challenge-case-index,
+    #project-03 .challenge-case-index {
+      flex: 0 0 auto;
+      color: var(--blue-500);
+      font-size: var(--type-meta);
+      font-weight: 850;
+      letter-spacing: .08em;
+    }
+
+    #project-01 .challenge-case h3,
+    #project-02 .challenge-case h3,
+    #project-03 .challenge-case h3 {
+      margin: 0;
+      color: var(--navy-950);
+      font-size: var(--type-heading);
+      line-height: 1.45;
+    }
+
+    #project-01 .challenge-flow,
+    #project-02 .challenge-flow,
+    #project-03 .challenge-flow {
+      display: grid;
+      gap: 0;
+      margin-top: 16px;
+      padding-left: 38px;
+      border-top: 1px solid #d7e0e7;
+    }
+
+    #project-01 .challenge-step,
+    #project-02 .challenge-step,
+    #project-03 .challenge-step {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      align-items: start;
+      column-gap: 10px;
+      padding: 13px 0;
+      border-bottom: 1px solid #d7e0e7;
+    }
+
+    #project-01 .challenge-step strong,
+    #project-02 .challenge-step strong,
+    #project-03 .challenge-step strong {
+      display: block;
+      margin: 0;
+      color: var(--blue-500);
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.75;
+    }
+
+    #project-01 .challenge-step p,
+    #project-02 .challenge-step p,
+    #project-03 .challenge-step p {
+      margin: 0;
+      color: var(--ink);
+      font-size: var(--type-body);
+      line-height: 1.75;
+    }
+
+    #project-01 .challenge-method,
+    #project-02 .challenge-method,
+    #project-03 .challenge-method {
+      background: transparent;
+    }
+
+    #project-01 .challenge-method-list,
+    #project-02 .challenge-method-list,
+    #project-03 .challenge-method-list {
+      display: grid;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--ink);
+      font-size: var(--type-body);
+      line-height: 1.65;
+    }
+
+    #project-01 .challenge-method-list li,
+    #project-02 .challenge-method-list li,
+    #project-03 .challenge-method-list li {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    #project-01 .challenge-method-list li::before,
+    #project-02 .challenge-method-list li::before,
+    #project-03 .challenge-method-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--blue-500);
+      font-weight: 850;
+    }
+
+    /* 모든 프로젝트 상세 페이지의 공통 형식 */
+    .project-sheet .project-head-summary {
+      max-width: 780px;
+      margin: 16px 0 0;
+      color: #46545f;
+      font-size: var(--type-body);
+      line-height: 1.75;
+    }
+
+    .project-sheet .project-profile-card {
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .project-sheet .project-profile-image { height: 260px; }
+
+    .project-sheet .project-profile-row dt,
+    .project-sheet .project-profile-row dd {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .project-sheet .responsibility-lines span {
+      display: block;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .project-sheet .responsibility-lines span::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--blue-500);
+      font-weight: 900;
+    }
+
+    .project-sheet .core-challenges { border-top: 1px solid var(--navy-950); }
+
+    .project-sheet .challenge-case { padding: 30px 0; }
+
+    .project-sheet .challenge-case-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .project-sheet .challenge-case-index {
+      flex: 0 0 auto;
+      color: var(--blue-500);
+      font-size: var(--type-meta);
+      font-weight: 850;
+      letter-spacing: .08em;
+    }
+
+    .project-sheet .challenge-case h3 {
+      margin: 0;
+      color: var(--navy-950);
+      font-size: var(--type-heading);
+      line-height: 1.45;
+    }
+
+    .project-sheet .challenge-flow {
+      display: grid;
+      gap: 0;
+      margin-top: 16px;
+      padding-left: 38px;
+      border-top: 1px solid #d7e0e7;
+    }
+
+    .project-sheet .challenge-step {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      align-items: start;
+      column-gap: 10px;
+      padding: 13px 0;
+      border-bottom: 1px solid #d7e0e7;
+    }
+
+    .project-sheet .challenge-step strong {
+      display: block;
+      margin: 0;
+      color: var(--blue-500);
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.75;
+    }
+
+    .project-sheet .challenge-step p {
+      margin: 0;
+      color: var(--ink);
+      font-size: var(--type-body);
+      line-height: 1.75;
+    }
+
+    .project-sheet .challenge-method { background: transparent; }
+
+    .project-sheet .challenge-method-list {
+      display: grid;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--ink);
+      font-size: var(--type-body);
+      line-height: 1.65;
+    }
+
+    .project-sheet .challenge-method-list li {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .project-sheet .challenge-method-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--blue-500);
+      font-weight: 850;
+    }
+
+    .project-image-pending {
+      display: grid;
+      place-items: center;
+      border: 1px dashed #b9cedd;
+      background: #f6f9fc;
+      color: var(--muted);
+    }
+
+    .project-image-pending span { font-size: var(--type-meta); font-weight: 700; }
+
+    @media screen and (max-width: 900px) {
+      #project-01 .project-head-summary, #project-02 .project-head-summary, #project-03 .project-head-summary { margin-top: 12px; }
+      #project-01 .project-profile-card, #project-02 .project-profile-card, #project-03 .project-profile-card { margin-top: 20px; }
+      #project-01 .project-profile-image, #project-02 .project-profile-image, #project-03 .project-profile-image { height: 200px; }
+      #project-01 .challenge-case, #project-02 .challenge-case, #project-03 .challenge-case { padding: 24px 0; }
+      #project-01 .challenge-flow, #project-02 .challenge-flow, #project-03 .challenge-flow { padding-left: 0; }
+      #project-01 .challenge-step, #project-02 .challenge-step, #project-03 .challenge-step { grid-template-columns: 58px minmax(0, 1fr); }
+
+      .project-sheet .project-head-summary { margin-top: 12px; }
+      .project-sheet .project-profile-card { margin-top: 20px; }
+      .project-sheet .project-profile-image { height: 200px; }
+      .project-sheet .challenge-case { padding: 24px 0; }
+      .project-sheet .challenge-flow { padding-left: 0; }
+      .project-sheet .challenge-step { grid-template-columns: 58px minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="project-jump" aria-label="게임 기획 경력기술서 이동">
+    <div class="project-jump-rail" aria-hidden="true"><span class="project-jump-fill" id="project-progress"></span></div>
+    <div class="project-jump-row">
+    <span class="project-jump-title">고대승 · 경력기술서</span>
+    </div>
+  </nav>
+
+  <div class="right-rail">
+    <aside class="project-side-index" aria-label="프로젝트 목차">
+      <button class="project-side-link active" type="button" data-section="summary" title="경력 요약" aria-current="page">
+        <span class="project-side-number">00</span><span class="project-side-label">경력 요약</span>
+      </button>
+      <button class="project-side-link" type="button" data-section="project-01" title="01 무한의 사신 키우기">
+        <span class="project-side-number">01</span><span class="project-side-label">무한의 사신 키우기</span>
+      </button>
+      <button class="project-side-link" type="button" data-section="project-02" title="02 엘리멘탈">
+        <span class="project-side-number">02</span><span class="project-side-label">엘리멘탈</span>
+      </button>
+      <button class="project-side-link" type="button" data-section="project-03" title="03 사신키우기 블록체인">
+        <span class="project-side-number">03</span><span class="project-side-label">사신키우기 블록체인</span>
+      </button>
+      <button class="project-side-link" type="button" data-section="project-04" title="04 크립토볼 Z on WEMIX">
+        <span class="project-side-number">04</span><span class="project-side-label">크립토볼 Z on WEMIX</span>
+      </button>
+      <button class="project-side-link" type="button" data-section="project-05" title="05 코믹스브레이커">
+        <span class="project-side-number">05</span><span class="project-side-label">코믹스브레이커</span>
+      </button>
+      <button class="project-side-link" type="button" data-section="project-06" title="06 주사위의신">
+        <span class="project-side-number">06</span><span class="project-side-label">주사위의신</span>
+      </button>
+      <button class="project-side-link" type="button" data-section="project-07" title="07 드래곤네스트2">
+        <span class="project-side-number">07</span><span class="project-side-label">드래곤네스트2</span>
+      </button>
+    </aside>
+    <button class="page-arrow next" id="page-next" type="button" aria-label="다음 페이지"><span aria-hidden="true">›</span></button>
+  </div>
+
+  <div class="page-controls" aria-label="페이지 이동">
+    <button class="page-arrow prev" id="page-prev" type="button" aria-label="이전 페이지"><span aria-hidden="true">‹</span></button>
+  </div>
+  <main>
+    <section class="sheet active-page" id="summary" aria-label="이력서 요약">
+      <header class="masthead">
+        <div class="identity-block">
+          <figure class="profile-photo" aria-label="프로필 사진 영역">
+            <img src="assets/profile-go-daeseung.png" alt="고대승 프로필 사진">
+          </figure>
+          <div class="identity-details">
+            <h1 class="name">고 대 승</h1>
+            <p class="role">시스템·밸런스 기획자</p>
+            <aside class="career-badge" aria-label="총 경력">
+              <span class="number">9년 1개월</span>
+              <span class="label">게임 기획 실무 경력</span>
+            </aside>
+            <div class="contact" aria-label="연락처">
+              <span><i class="contact-icon" aria-hidden="true">✉</i>coloncds@gmail.com</span>
+              <span><i class="contact-icon" aria-hidden="true">☎</i>010-9233-9480</span>
+              <span><i class="contact-icon" aria-hidden="true">⌖</i>서울특별시 금천구</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <h2>문제를 구체화하고,<br><span>해결 기준을 시스템으로 설계합니다.</span></h2>
+          <p class="summary">
+            <span class="summary-line">프로젝트의 목표와 핵심 재미를 정리하고, 플레이 경험에서 해결할 문제를 구체화합니다.</span>
+            <span class="summary-line">성장·전투·보상 구조를 데이터와 플레이 경험으로 검토하며, 유저가 다음 목표를 자연스럽게 이해하고 성장을 체감하는 흐름을 설계해왔습니다.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="section career-section">
+        <h2 class="section-title">경력사항</h2>
+        <div class="career-content">
+          <div class="timeline">
+            <article class="job">
+              <header class="job-head">
+                <h3 class="job-title-line"><span class="company">다에리소프트</span><span class="divider">|</span><span class="employment">게임 기획 · 과장</span></h3>
+                <div class="date"><span>2022.07 - 2025.09</span><small class="tenure">(3년 2개월)</small></div>
+              </header>
+              <p class="job-focus"><span>방치형 RPG의 성장·전투·BM을 포함한 시스템·밸런스 기획</span><span>PD로서 프로젝트 방향과 출시 기준을 수립하고, 출시·라이브 전환 일정 관리</span></p>
+            </article>
+            <article class="job">
+              <header class="job-head">
+                <h3 class="job-title-line"><span class="company">모히또게임즈</span><span class="divider">|</span><span class="employment">게임 기획 · 사원</span></h3>
+                <div class="date"><span>2019.06 - 2022.06</span><small class="tenure">(3년)</small></div>
+              </header>
+              <p class="job-focus"><span>블록체인 프로젝트의 P2E 경제 구조와 토큰 보상 흐름 설계</span><span>다양한 라이브 게임의 시스템·밸런스와 콘텐츠 기획</span></p>
+            </article>
+            <article class="job">
+              <header class="job-head">
+                <h3 class="job-title-line"><span class="company">조이시티</span><span class="divider">|</span><span class="employment">게임 기획 · 사원</span></h3>
+                <div class="date"><span>2018.01 - 2019.06</span><small class="tenure">(1년 5개월)</small></div>
+              </header>
+              <p class="job-focus"><span>장기 라이브 프로젝트의 시스템·밸런스와 경쟁 콘텐츠 기획</span><span>신규 이벤트와 BM 상품을 기획하며 라이브 업데이트 운영</span></p>
+            </article>
+            <article class="job">
+              <header class="job-head">
+                <h3 class="job-title-line"><span class="company">아이덴티티게임즈</span><span class="divider">|</span><span class="employment">게임 기획 · 사원</span></h3>
+                <div class="date"><span>2016.06 - 2017.12</span><small class="tenure">(1년 6개월)</small></div>
+              </header>
+              <p class="job-focus"><span>액션 MORPG의 시스템과 콘텐츠 동선 기획</span><span>퀘스트·튜토리얼을 통해 처음 접하는 시스템을 이해시키는 초기 경험 설계</span></p>
+            </article>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">프로젝트</h2>
+        <div class="project-archive" aria-label="프로젝트 경험 요약">
+          <article class="project-archive-item">
+            <span class="project-archive-index">01</span>
+            <figure class="project-archive-thumb"><img src="assets/project-infinite-reaper.png" alt="무한의 사신 키우기 대표 이미지"></figure>
+            <div><h3 class="project-archive-title-row">무한의 사신 키우기 <span class="project-archive-period"><span>2024.07 - 2025.09</span><span class="project-archive-tenure">(1년 2개월)</span></span></h3></div>
+            <p class="project-archive-details"><span><b>장르</b>모바일 · 방치형 RPG</span><span><b>역할</b>PD · 시스템·밸런스 기획</span></p>
+          </article>
+
+          <article class="project-archive-item">
+            <span class="project-archive-index">02</span>
+            <figure class="project-archive-thumb"><img src="assets/project-elemental.png" alt="엘리멘탈 대표 이미지"></figure>
+            <div><h3 class="project-archive-title-row">엘리멘탈 <span class="project-archive-period"><span>2023.07 - 2024.07</span><span class="project-archive-tenure">(1년)</span></span></h3></div>
+            <p class="project-archive-details"><span><b>장르</b>모바일 · 방치형 RPG</span><span><b>역할</b>시스템·밸런스 기획</span></p>
+          </article>
+
+          <article class="project-archive-item">
+            <span class="project-archive-index">03</span>
+            <figure class="project-archive-thumb"><img src="assets/project-reaper-blockchain.png" alt="사신키우기 블록체인 대표 이미지"></figure>
+            <div><h3 class="project-archive-title-row">사신키우기 블록체인 <span class="project-archive-period"><span>2022.07 - 2023.07</span><span class="project-archive-tenure">(1년)</span></span></h3></div>
+            <p class="project-archive-details"><span><b>장르</b>모바일 · 방치형 RPG</span><span><b>역할</b>시스템·밸런스 기획</span></p>
+          </article>
+          <article class="project-archive-item">
+            <span class="project-archive-index">04</span>
+            <figure class="project-archive-thumb"><img src="assets/project-cryptoball-z.png" alt="크립토볼 Z on WEMIX 대표 이미지"></figure>
+            <div><h3 class="project-archive-title-row">크립토볼 Z on WEMIX <span class="project-archive-period"><span>2021.11 - 2022.06</span><span class="project-archive-tenure">(7개월)</span></span></h3></div>
+            <p class="project-archive-details"><span><b>장르</b>모바일 · 수집형 RPG</span><span><b>역할</b>시스템·밸런스 기획</span></p>
+          </article>
+          <article class="project-archive-item">
+            <span class="project-archive-index">05</span>
+            <figure class="project-archive-thumb"><img src="assets/project-comix-breaker.png" alt="코믹스브레이커 대표 이미지"></figure>
+            <div><h3 class="project-archive-title-row">코믹스브레이커 <span class="project-archive-period"><span>2021.06 - 2021.11</span><span class="project-archive-tenure">(5개월)</span></span></h3></div>
+            <p class="project-archive-details"><span><b>장르</b>모바일 · 전략</span><span><b>역할</b>시스템 기획</span></p>
+          </article>
+          <article class="project-archive-item">
+            <span class="project-archive-index">06</span>
+            <figure class="project-archive-thumb"><img src="assets/project-god-of-dice.png" alt="주사위의신 대표 이미지"></figure>
+            <div><h3 class="project-archive-title-row">주사위의신 <span class="project-archive-period"><span>2018.01 - 2021.06</span><span class="project-archive-tenure">(3년 5개월)</span></span></h3></div>
+            <p class="project-archive-details"><span><b>장르</b>모바일 · PVP 보드</span><span><b>역할</b>시스템·밸런스 기획</span></p>
+          </article>
+          <article class="project-archive-item">
+            <span class="project-archive-index">07</span>
+            <figure class="project-archive-thumb"><img src="assets/project-dragon-nest-2.png" alt="드래곤네스트2 대표 이미지"></figure>
+            <div><h3 class="project-archive-title-row">드래곤네스트2 <span class="project-archive-period"><span>2016.06 - 2017.12</span><span class="project-archive-tenure">(1년 6개월)</span></span></h3></div>
+            <p class="project-archive-details"><span><b>장르</b>모바일 · 액션 MORPG</span><span><b>역할</b>시스템 기획</span></p>
+          </article>
+        </div>
+      </section>
+
+      <span class="page-no">01 / 08</span>
+    </section>
+
+    <section class="sheet project-sheet" id="project-01" data-project="01" aria-label="무한의 사신 키우기 경력기술서">
+      <header class="project-head compact-project-head" data-project="01">
+        <div>
+          <p class="eyebrow">경력기술서 01</p>
+          <h1>무한의 사신 키우기</h1>
+          <p class="project-head-summary">
+            다에리소프트의 핵심 IP인 「사신 키우기」를 활용한 방치형 RPG입니다.
+            프로젝트 초반 인수인계 후 PD 역할을 맡아 방향과 출시 기준을 다시 정리하고,
+            1년 내 출시를 목표로 프로젝트 전반을 이끌었습니다.
+          </p>
+        </div>
+      </header>
+
+      <section class="project-profile-card" aria-label="무한의 사신 키우기 프로젝트 기본 정보">
+        <figure class="project-profile-image">
+          <img src="assets/project-infinite-reaper.png" alt="무한의 사신 키우기 대표 이미지">
+        </figure>
+        <dl class="project-profile-info">
+          <div class="project-profile-row">
+            <dt>회사</dt>
+            <dd>다에리소프트</dd>
+          </div>
+          <div class="project-profile-row">
+            <dt>플랫폼·장르</dt>
+            <dd>모바일 · 방치형 RPG</dd>
+          </div>
+          <div class="project-profile-row">
+            <dt>출시일</dt>
+            <dd>2025. 6. 13.</dd>
+          </div>
+          <div class="project-profile-row">
+            <dt>참여 기간</dt>
+            <dd>2024.07 - 2025.09</dd>
+          </div>
+          <div class="project-profile-row">
+            <dt>팀 역할</dt>
+            <dd>PD · 시스템·밸런스 기획</dd>
+          </div>
+          <div class="project-profile-row">
+            <dt>팀 구성</dt>
+            <dd>기획 2명 · 디자인 3명 · 개발 3명</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">핵심 과제</h2>
+        <div class="core-challenges">
+          <article class="challenge-case">
+            <header class="challenge-case-head">
+              <span class="challenge-case-index">01</span>
+              <h3>게임 전체 밸런스</h3>
+            </header>
+            <div class="challenge-flow">
+              <div class="challenge-step">
+                <strong>상황</strong>
+                <p>기존 IP의 핵심 시스템을 활용하면서, 새 게임에 맞는 성장 재미와 밸런스를 설계했습니다. 소규모 팀으로 안정적인 라이브를 이어가야 했기 때문에, 리소스 의존도가 높은 콘텐츠보다 데이터 기준을 바탕으로 시스템과 BM을 빠르게 조정할 수 있는 구조가 필요했습니다.</p>
+              </div>
+              <div class="challenge-step challenge-method">
+                <strong>방법</strong>
+                <ul class="challenge-method-list">
+                  <li>타 소규모 방치형 RPG의 BM·성장 시스템을 분석하고, 기존 IP에서 유지할 핵심 시스템의 적용 범위 정리</li>
+                  <li>1년 성장량을 월 단위로 구분한 시뮬레이션을 제작해, 시스템별 성장 기여도와 스테이지 전투력 밸런스 설계</li>
+                  <li>상품을 전투력으로 환산한 BM 시뮬레이션과 시스템별 밸런스 시트를 구축해 신규 데이터 세팅 기준 마련</li>
+                </ul>
+              </div>
+              <div class="challenge-step">
+<strong>포스트모템</strong>
+                <ul class="challenge-method-list">
+                  <li>시뮬레이션을 통해 밸런스와 BM 데이터를 빠르게 세팅하고, 신규 데이터 반영 일정 단축</li>
+                  <li>버그 대응과 운영 보상이 누적되며 계획보다 성장 속도가 빨라져, 콘텐츠 소모 속도와 업데이트 주기를 맞추는 데 어려움 발생</li>
+                  <li>상품 가치를 전투력으로 환산하고, 유저들의 구매 후 성장 체감과 만족도 향상</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="challenge-case">
+            <header class="challenge-case-head">
+              <span class="challenge-case-index">02</span>
+              <h3>실시간 IO 콘텐츠</h3>
+            </header>
+            <div class="challenge-flow">
+              <div class="challenge-step">
+                <strong>상황</strong>
+                <p>프로젝트 인수 시 실시간 IO 콘텐츠 추가 요청이 확정되어 있었습니다. 방치형 RPG 본편과 다른 직접 조작형 미니게임이지만, 메인 장르와의 연결감도 유지해야 했습니다. 성장 격차가 승패에 직접 반영되면 참여 유저 풀이 줄어들 수 있어, 전투 규칙은 공정하게 설계하면서 보상은 본편 성장과 연결할 필요가 있었습니다.</p>
+              </div>
+              <div class="challenge-step challenge-method">
+                <strong>방법</strong>
+                <ul class="challenge-method-list">
+                  <li>이동·공격 중심의 간단한 조작 구조와 몬스터 패턴 대응 방식 설계</li>
+                  <li>장비·전투력 성장 영향을 배제한 공통 전투 조건과 점수 목표 달성형 종료 구조 구성</li>
+                  <li>스테이지 진행도에 따라 전용 재화를 차등 지급하고 성장 아이템 구매로 본편 성장과 연결</li>
+                </ul>
+              </div>
+              <div class="challenge-step">
+<strong>포스트모템</strong>
+                <ul class="challenge-method-list">
+                  <li>직접 조작과 패턴 대응을 통해 방치형 본편과 다른 플레이 경험 제공</li>
+                  <li>공통 전투 조건과 본편 진행도 기반 보상을 함께 적용해 참여 장벽과 보상 납득도 조율</li>
+                  <li>본편과 성향이 다른 만큼 장기 확장보다 플레이 흐름을 환기하는 미니게임으로 유지</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="challenge-case">
+            <header class="challenge-case-head">
+              <span class="challenge-case-index">03</span>
+              <h3>각성 시스템</h3>
+            </header>
+            <div class="challenge-flow">
+              <div class="challenge-step">
+                <strong>상황</strong>
+                <p>세 명의 캐릭터가 함께 전투하지만 각자 독립적으로 공격하는 구조여서, 캐릭터 간의 유대감과 3인 구성의 이유를 플레이로 표현할 필요가 있었습니다. 3인 구성에서만 가능한 더 큰 효과를 체감하고, 전투의 속도와 분위기가 전환되는 경험을 제공하고자 했습니다.</p>
+              </div>
+              <div class="challenge-step challenge-method">
+                <strong>방법</strong>
+                <ul class="challenge-method-list">
+                  <li>세 캐릭터가 하나의 대형 각성 캐릭터로 변하는 구조 설계</li>
+                  <li>각성 중 전투 속도를 기존 대비 1.5배로 높이고 전용 공격 연출 적용</li>
+                  <li>대형 캐릭터 리소스에 외형·공격 연출을 집중하고, 각성 레벨 성장 시스템으로 육성 요소 연결</li>
+                </ul>
+              </div>
+              <div class="challenge-step">
+<strong>포스트모템</strong>
+                <ul class="challenge-method-list">
+                  <li>세 캐릭터가 대형 각성 캐릭터로 변화하며 3인 구성의 의미를 전투 흐름 안에서 전달</li>
+                  <li>전투 속도 1.5배와 변화한 공격 연출로 전투가 호쾌해졌다는 피드백 확인</li>
+                  <li>각성 스킬 레벨 성장 시스템을 추가해 다양한 각성 캐릭터를 육성하는 재미 제공</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <span class="page-no">02 / 08</span>
+    </section>
+
+    <section class="sheet project-sheet" id="project-02" data-project="02" aria-label="엘리멘탈 경력기술서">
+      <header class="project-head compact-project-head" data-project="02">
+        <div>
+          <p class="eyebrow">경력기술서 02</p>
+          <h1>엘리멘탈</h1>
+          <p class="project-head-summary">방치형과 멀티 플레이를 결합한 RPG입니다. 국내 라이브 서비스를 유지하며 최소 인원으로 글로벌 버전을 준비하고, 1~2주 단위 업데이트를 이어가는 운영을 담당했습니다.</p>
+        </div>
+      </header>
+
+      <section class="project-profile-card" aria-label="엘리멘탈 프로젝트 기본 정보">
+        <figure class="project-profile-image">
+          <img src="assets/project-elemental.png" alt="엘리멘탈 대표 이미지">
+        </figure>
+        <dl class="project-profile-info">
+          <div class="project-profile-row"><dt>회사</dt><dd>다에리소프트</dd></div>
+          <div class="project-profile-row"><dt>플랫폼·장르</dt><dd>모바일 · 방치형 RPG</dd></div>
+          <div class="project-profile-row"><dt>출시일</dt><dd>2023. 4. 16.</dd></div>
+          <div class="project-profile-row"><dt>참여 기간</dt><dd>2023.07 - 2024.07</dd></div>
+          <div class="project-profile-row"><dt>팀 역할</dt><dd>팀장 · 시스템·밸런스 기획</dd></div>
+          <div class="project-profile-row"><dt>팀 구성</dt><dd>기획 2명 · 디자인 1명 · 개발 2명</dd></div>
+        </dl>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">핵심 과제</h2>
+        <div class="core-challenges">
+          <article class="challenge-case">
+            <header class="challenge-case-head"><span class="challenge-case-index">01</span><h3>글로벌 출시와 초반 경험 개선</h3></header>
+            <div class="challenge-flow">
+              <div class="challenge-step"><strong>상황</strong><p>국내 라이브는 커뮤니티를 통한 정보 공유가 이미 활성화돼 있었지만, 글로벌 유저는 같은 정보 환경을 기대하기 어려웠습니다. 후반 콘텐츠에 도달한 유저는 전투와 성장의 재미를 더 높게 체감했고, 리텐션도 높게 나타났습니다. 소규모 인원으로 국내 라이브·글로벌 출시를 병행하며 후반 콘텐츠 중심의 업데이트를 이어가려면, 유저가 초기 이탈 구간을 넘어 빠르게 도달할 성장 흐름이 필요했습니다.</p></div>
+              <div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>퀘스트 진행도와 레벨별 이탈률을 기준으로 초기 이탈 구간 확인</li><li>후반 구간의 리텐션과 플레이 반응을 비교해, 유저가 핵심 재미 구간까지 빠르게 도달하도록 성장 목표 설정</li><li>튜토리얼·도움말·인게임 안내를 보완해 해외 유저의 정보 공백 축소</li><li>후반 콘텐츠 중심의 라이브 업데이트에 빠르게 합류할 수 있도록, 이탈이 높은 구간에 성장 부스터와 초반 BM 상품 배치</li></ul></div>
+              <div class="challenge-step challenge-result"><strong>포스트모템</strong><ul class="challenge-method-list"><li>소규모 인원으로 국내 라이브·글로벌 출시를 병행하며 3개월 내 글로벌 출시 완료</li><li>이탈 데이터를 바탕으로 튜토리얼·도움말·성장 부스터의 우선순위를 정리해 글로벌 유저의 초기 진입 흐름 보완</li><li>출시 후 3개월간 회사 전체 매출의 80% 견인</li></ul></div>
+            </div>
+          </article>
+          <article class="challenge-case">
+            <header class="challenge-case-head"><span class="challenge-case-index">02</span><h3>월드 보스 레이드</h3></header>
+            <div class="challenge-flow">
+              <div class="challenge-step"><strong>상황</strong><p>멀티 플레이가 가능한 게임이었지만, 방치형 성장 구조상 뉴비와 올드 유저의 전투력 격차가 커지며 서로 함께 플레이할 접점이 부족했습니다. 뉴비도 부담 없이 참여할 수 있으면서, 올드 유저는 힘을 모아 더 높은 난이도의 보스에 도전할 수 있는 협력 콘텐츠가 필요했습니다.</p></div>
+              <div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>난이도별 보스를 구성하고, 뉴비부터 올드 유저까지 같은 콘텐츠에 참여할 수 있도록 성장 단계에 맞는 공략 목표 설계</li><li>보스 공격력보다 HP를 중심으로 난이도를 조정해 뉴비도 생존하며 기여할 수 있는 전투 구조 구성</li><li>입장 제한 없이 언제든 보스 공략에 참여하도록 해, 뉴비와 올드 유저가 같은 전투에서 만나고 도움을 주고받을 수 있는 구조 마련</li><li>미션형 1회 보상으로 설계해 보상을 받은 유저도 다른 유저의 공략을 계속 도울 수 있도록 구성</li></ul></div>
+              <div class="challenge-step challenge-result"><strong>포스트모템</strong><ul class="challenge-method-list"><li>보스 HP 중심 난이도로 뉴비와 올드 유저가 같은 전투에 참여하는 협력 경험 구성</li><li>입장 제한 없는 참여와 미션형 1회 보상으로 유저 간 협력 참여를 유도하고, 길드 가입과 커뮤니티 반응으로 연결</li><li>경쟁 중심의 성장 구조에서도 공동 목표를 제공할 때 유저가 함께 플레이할 이유가 만들어짐을 경험</li></ul></div>
+            </div>
+          </article>
+          <article class="challenge-case">
+            <header class="challenge-case-head"><span class="challenge-case-index">03</span><h3>보스 사냥터</h3></header>
+            <div class="challenge-flow">
+              <div class="challenge-step"><strong>상황</strong><p>무한 사냥터가 추가되기 전에는 일반 사냥터의 구간별 효율에 따라 유저들이 같은 필드에 모여 함께 사냥했습니다. 이후 전투력에 따라 더 높은 사냥터가 자동으로 열리는 무한 사냥터가 도입되면서, 유저마다 효율이 다른 구간으로 이동하게 됐습니다. 개인 성장에는 유리했지만 후반으로 갈수록 같은 필드에서 다른 유저를 만나고 함께 사냥하는 경험은 줄어들었습니다. 무한 사냥터의 성장 흐름은 유지하면서도 유저가 다시 모일 수 있는 공동 목표 구간이 필요했습니다.</p></div>
+              <div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>무한 사냥터 구간마다 일반 구간보다 효율이 높은 보스 사냥터 배치</li><li>대형 보스 전투를 구성해 일반 사냥터와 다른 도전 목표 제공</li><li>일반 구간은 성장 경로, 보스 사냥터는 유저가 모이는 목표 구간으로 역할 분리</li></ul></div>
+              <div class="challenge-step challenge-result"><strong>포스트모템</strong><ul class="challenge-method-list"><li>자동 확장형 무한 사냥터를 유지하면서도 보스 사냥터를 공동 목표 구간으로 설정해 흩어진 후반 유저 재집결</li><li>일반 사냥터와 구분되는 보스 전투를 구성해, 성장 과정에 새로운 전투 경험 제공</li><li>함께 사냥하는 체감과 필드 커뮤니티에 대한 긍정적 반응 확인</li></ul></div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <span class="page-no">03 / 08</span>
+    </section>
+
+    <section class="sheet project-sheet" id="project-03" data-project="03" aria-label="사신키우기 블록체인 경력기술서">
+      <header class="project-head compact-project-head" data-project="03">
+        <div>
+          <p class="eyebrow">경력기술서 03</p>
+          <h1>사신키우기 블록체인</h1>
+          <p class="project-head-summary">기존 출시 게임에 블록체인 구조를 접목한 모바일 방치형 RPG입니다. 인게임 BM과 토큰 경제를 분리해 설계하고, 코스튬 NFT를 중심으로 토큰 생성·소비 흐름을 구축했습니다.</p>
+        </div>
+      </header>
+
+      <section class="project-profile-card" aria-label="사신키우기 블록체인 프로젝트 기본 정보">
+        <figure class="project-profile-image">
+          <img src="assets/project-reaper-blockchain.png" alt="사신키우기 블록체인 대표 이미지">
+        </figure>
+        <dl class="project-profile-info">
+          <div class="project-profile-row"><dt>회사</dt><dd>다에리소프트</dd></div>
+          <div class="project-profile-row"><dt>플랫폼·장르</dt><dd>모바일 · 방치형 RPG</dd></div>
+          <div class="project-profile-row"><dt>출시일</dt><dd>프로젝트 드랍</dd></div>
+          <div class="project-profile-row"><dt>참여 기간</dt><dd>2022.07 - 2023.07</dd></div>
+          <div class="project-profile-row"><dt>팀 역할</dt><dd>시스템·밸런스 기획</dd></div>
+          <div class="project-profile-row"><dt>팀 구성</dt><dd>기획 1명 · 디자인 1명 · 개발 3명</dd></div>
+        </dl>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">핵심 과제</h2>
+        <div class="core-challenges">
+          <article class="challenge-case">
+            <header class="challenge-case-head"><span class="challenge-case-index">01</span><h3>블록체인 구조 설계</h3></header>
+            <div class="challenge-flow">
+              <div class="challenge-step"><strong>상황</strong><p>기존 방치형 RPG의 성장·전투 경험을 유지한 채 블록체인 구조를 추가해야 했습니다. 인게임 BM은 데이터를 통해 게임 매출을 관리할 수 있지만, 토큰은 시장 변동에 따라 가치를 통제하기 어렵습니다. 따라서 인게임 BM으로 게임 매출을 확보하면서, 토큰은 반복 플레이와 코스튬 획득을 위한 별도 보상으로 역할을 분리해야 했습니다.</p></div>
+              <div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>상품 가격과 보상 수치를 데이터로 조정해 인게임 BM으로 게임 매출을 관리</li><li>게임 플레이를 통해 토큰을 획득하고 코스튬 뽑기에 사용하도록, 토큰의 획득·소비 흐름 설계</li><li>NFT 코스튬에 전투 능력치와 토큰 획득 요소를 부여해, 전투력 성장과 토큰 보상 목표 연결</li></ul></div>
+              <div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>인게임 BM을 데이터로 조정하며 게임 매출을 안정적으로 유지</li><li>토큰을 플레이 보상과 코스튬 뽑기 재화로 연결해, 일반 유저와 토큰 유저 모두에게 반복 플레이 목적 제공</li></ul></div>
+            </div>
+          </article>
+          <article class="challenge-case">
+            <header class="challenge-case-head"><span class="challenge-case-index">02</span><h3>코스튬 시스템</h3></header>
+            <div class="challenge-flow">
+              <div class="challenge-step"><strong>상황</strong><p>기존 게임에는 다양한 코스튬이 있었고, 외형을 구매·수집하는 방식은 유저에게 익숙한 소비 경험이었습니다. 이를 NFT 상품으로 확장하되, 전투력 성장을 원하는 일반 유저와 토큰 획득을 원하는 유저 모두가 코스튬을 획득하고 활용할 이유를 만들 필요가 있었습니다.</p></div>
+              <div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>코스튬을 장착하면 게임 플레이를 통해 토큰을 획득하고, 획득 횟수 소진으로 공급량을 제어하는 구조 설계</li><li>코스튬을 강화 재료로 활용해 전투 능력치 성장을 이어가는 순환 구조 구성</li><li>일반 재화와 토큰으로 코스튬을 획득할 수 있도록 뽑기·등급 합성 구조 구성</li></ul></div>
+              <div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>코스튬에 외형 수집과 전투 능력치 성장을 연결해, 전투력 성장을 원하는 일반 유저의 획득·활용 이유 제공</li><li>코스튬 장착 후 게임 플레이로 토큰을 획득하게 해, 토큰 획득을 원하는 유저에게도 반복 플레이 목표 제공</li></ul></div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <span class="page-no">04 / 08</span>
+    </section>
+
+    <section class="sheet project-sheet" id="project-04" data-project="04" aria-label="크립토볼 Z on WEMIX 경력기술서">
+      <header class="project-head compact-project-head" data-project="04"><div><p class="eyebrow">경력기술서 04</p><h1>크립토볼 Z on WEMIX</h1><p class="project-head-summary">기존 수집형 RPG에 P2E 경제를 접목해, 핵심 마이닝과 토큰 제련소로 토큰 발행·교환 구조를 설계했습니다.</p></div></header>
+      <section class="project-profile-card" aria-label="크립토볼 Z on WEMIX 프로젝트 기본 정보">
+        <figure class="project-profile-image"><img src="assets/project-cryptoball-z.png" alt="크립토볼 Z on WEMIX 대표 이미지"></figure>
+        <dl class="project-profile-info">
+          <div class="project-profile-row"><dt>회사</dt><dd>모히또게임즈</dd></div><div class="project-profile-row"><dt>플랫폼·장르</dt><dd>모바일 · 수집형 RPG</dd></div>
+          <div class="project-profile-row"><dt>출시일</dt><dd>2022. 5. 11.</dd></div><div class="project-profile-row"><dt>참여 기간</dt><dd>2021.11 - 2022.06</dd></div>
+          <div class="project-profile-row"><dt>팀 역할</dt><dd>시스템·밸런스 기획</dd></div><div class="project-profile-row"><dt>팀 구성</dt><dd>기획 6명 · 디자인 3명 · 개발 7명</dd></div>
+        </dl>
+      </section>
+      <section class="section"><h2 class="section-title">핵심 과제</h2><div class="core-challenges">
+<article class="challenge-case"><header class="challenge-case-head"><span class="challenge-case-index">01</span><h3>드론 시스템</h3></header><div class="challenge-flow"><div class="challenge-step"><strong>상황</strong><p>스테이지 클리어 보상을 토큰 공급과 연결하되, 성장 재화와 토큰 보상이 플레이 흐름 안에서 자연스럽게 이어지는 구조가 필요했습니다. 토큰은 시장 상황에 따라 공급 속도를 조절해야 했기 때문에, 게임 플레이로 재료를 얻어 드론을 제작하고 일정 시간 후 보상을 획득하는 흐름을 설계했습니다.</p></div><div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>NFT 커맨더를 장착한 뒤 스테이지를 클리어하면 드론 제작 재료를 획득하도록 구성</li><li>획득한 재료로 드론을 제작하고 슬롯에 장착하면, 일정 시간 후 성장 재화와 토큰을 획득하는 흐름 설계</li><li>성장 재화 보상은 NFT 커맨더 보유 여부와 무관하게 제공하고, NFT 커맨더는 토큰 획득 효율에만 영향을 주도록 분리</li></ul></div><div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>스테이지 클리어부터 드론 제작·장착·보상 획득으로 이어지는 흐름을 만들어 반복 플레이 목적 제공</li><li>성장 재화와 토큰 보상을 함께 제공하면서도, NFT 커맨더는 토큰 획득 효율에만 영향을 주도록 구성해 서로 다른 유저 목적을 함께 충족</li><li>드론이 전체 토크노믹스 보상의 약 50%를 담당한 만큼, 공급 구조와 보상 흐름이 토큰 경제에 미치는 영향을 고려하는 토크노믹스 설계의 중요성을 학습</li></ul></div></div></article>
+<article class="challenge-case"><header class="challenge-case-head"><span class="challenge-case-index">02</span><h3>토큰 제련소</h3></header><div class="challenge-flow"><div class="challenge-step"><strong>상황</strong><p>게임 내 토큰 공급량은 누적될수록 늘어나므로, 고정 교환비로 헤르코 코인을 지급하면 토큰 가치와 외부 유통량을 안정적으로 관리하기 어려웠습니다. 일일 토큰 공급량에 따라 토큰당 헤르코 코인 환산 비율이 조정되도록 구조화하고, 일일 교환 제한을 두어 외부로 빠져나가는 물량을 제어하는 제련소가 필요했습니다.</p></div><div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>일일 토큰 공급량에 따라 토큰당 헤르코 코인 교환비가 조정되도록 구조 설계</li><li>일일 교환 한도를 설정해 한 번에 외부로 전환되는 토큰 물량 제어</li><li>토큰을 지갑에 넣고 헤르코 코인으로 교환하는 이용 흐름과 처리 조건·예외 상황 정의</li></ul></div><div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>공급량 변화에 맞춰 교환비가 조정되도록 구성해, 토큰 공급과 헤르코 코인 전환 흐름을 함께 관리</li><li>일일 교환 한도를 통해 토큰이 한 번에 외부로 빠져나가는 흐름을 제어</li><li>토큰 경제에서는 고정된 교환비보다 공급량 변화와 유저 이용 흐름을 함께 고려해야 함을 학습</li></ul></div></div></article>
+      </div></section><span class="page-no">05 / 08</span>
+    </section>
+
+    <section class="sheet project-sheet" id="project-05" data-project="05" aria-label="코믹스브레이커 경력기술서">
+      <header class="project-head compact-project-head" data-project="05"><div><p class="eyebrow">경력기술서 05</p><h1>코믹스브레이커</h1><p class="project-head-summary">스팀 패키지 게임의 경험을 참고해 개발한 모바일 수집형 RPG입니다. 광고 기반 수익 구조에 맞춰 리텐션과 상품 구조를 검토했습니다.</p></div></header>
+      <section class="project-profile-card" aria-label="코믹스브레이커 프로젝트 기본 정보">
+        <figure class="project-profile-image"><img src="assets/project-comix-breaker.png" alt="코믹스브레이커 대표 이미지"></figure>
+        <dl class="project-profile-info">
+          <div class="project-profile-row"><dt>회사</dt><dd>모히또게임즈</dd></div><div class="project-profile-row"><dt>플랫폼·장르</dt><dd>모바일 · 전략</dd></div>
+          <div class="project-profile-row"><dt>출시일</dt><dd>2021. 08. 18.</dd></div><div class="project-profile-row"><dt>참여 기간</dt><dd>2021.06 - 2021.11</dd></div>
+          <div class="project-profile-row"><dt>팀 역할</dt><dd>시스템 기획</dd></div><div class="project-profile-row"><dt>팀 구성</dt><dd>기획 3명 · 디자인 3명 · 개발 5명</dd></div>
+        </dl>
+      </section>
+      <section class="section"><h2 class="section-title">핵심 과제</h2><div class="core-challenges">
+<article class="challenge-case"><header class="challenge-case-head"><span class="challenge-case-index">01</span><h3>광고 상품 기획</h3></header><div class="challenge-flow"><div class="challenge-step"><strong>상황</strong><p>스팀 패키지 게임을 참고해 모바일 전략 게임으로 개발했습니다. 전략 게임에서 성능을 직접 높이는 과금 상품은 전투의 판단과 난도를 쉽게 만들 수 있어, 인앱 결제보다 광고 시청을 통한 보상을 주요 수익 방식으로 검토했습니다. 따라서 광고 수익을 유지하려면 유저가 반복해서 접속하고 플레이하는 흐름이 중요했습니다.</p></div><div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>전투 중 선택 초기화·부활 등 플레이 과정에서 필요한 순간에 선택할 수 있는 광고 보상 배치</li><li>전투의 전략적 판단을 직접 대체하기보다 진행 중 불편을 완화하는 방향으로 보상 가치 구성</li><li>출석·우편 보상과 연계한 일일 접속 리텐션 상품 기획</li></ul></div><div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>전투 중 필요한 순간에 직접 선택하는 광고 보상은 참여율과 보상 활용도를 높이는 방식으로 작동</li><li>완결된 패키지 게임의 플레이 구조만으로는 모바일 유저의 일일 접속과 리텐션을 충분히 이어가기 어렵다는 점을 학습</li></ul></div></div></article>
+      </div></section><span class="page-no">06 / 08</span>
+    </section>
+
+    <section class="sheet project-sheet" id="project-06" data-project="06" aria-label="주사위의신 경력기술서">
+      <header class="project-head compact-project-head" data-project="06"><div><p class="eyebrow">경력기술서 06</p><h1>주사위의신</h1><p class="project-head-summary">회사의 핵심 프로젝트인 모바일 PVP 보드 게임입니다. 조이시티에서 합류한 뒤 회사 분리 후에도 모히또게임즈에서 동일 프로젝트를 이어 담당하며, 주로 시스템·콘텐츠·BM을 담당했습니다.</p></div></header>
+      <section class="project-profile-card" aria-label="주사위의신 프로젝트 기본 정보"><figure class="project-profile-image"><img src="assets/project-god-of-dice.png" alt="주사위의신 대표 이미지"></figure><dl class="project-profile-info">
+        <div class="project-profile-row"><dt>회사</dt><dd>조이시티 → 모히또게임즈</dd></div><div class="project-profile-row"><dt>플랫폼·장르</dt><dd>모바일 · PVP 보드</dd></div>
+        <div class="project-profile-row"><dt>출시일</dt><dd>2015. 10. 14.</dd></div><div class="project-profile-row"><dt>참여 기간</dt><dd>2018.01 - 2021.06</dd></div>
+          <div class="project-profile-row"><dt>팀 역할</dt><dd>시스템·밸런스 기획</dd></div><div class="project-profile-row"><dt>팀 구성</dt><dd>기획 3명 · 디자인 2명 · 개발 3명</dd></div>
+      </dl></section>
+      <section class="section"><h2 class="section-title">핵심 과제</h2><div class="core-challenges">
+        <article class="challenge-case"><header class="challenge-case-head"><span class="challenge-case-index">01</span><h3>국가대항전</h3></header><div class="challenge-flow"><div class="challenge-step"><strong>상황</strong><p>새로운 경쟁 콘텐츠를 추가하고 싶었지만, 기존 경쟁 콘텐츠를 추가할 때마다 매칭 풀이 분산되는 문제가 있었습니다. 기존 매칭을 유지하면서도 많은 유저가 함께 참여할 수 있는 경쟁 콘텐츠가 필요했고, 이를 위해 국가 단위로 경쟁하는 국가대항전을 기획했습니다.</p></div><div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>16개 국가를 4개 그룹으로 나누고, 그룹 내 2개 국가가 겨루는 방식으로 국가별 경쟁 구조 구성</li><li>개인 기여 보상과 국가 승리 보상을 분리해, 개인 플레이가 국가 경쟁에 기여하도록 보상 비중 설계</li><li>국가 간 점수 차이가 과도하게 벌어지지 않도록 점수를 보정해, 이벤트 기간 경쟁이 지속되도록 구성</li><li>이벤트 시작 시 전체 유저를 국가대항전에 자동 매칭하고, 연승 종료 시 참여를 자동 종료하며 참여 보상 지급</li></ul></div><div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>이벤트 기간 동시 접속자 수가 기존 대비 최대 3배 증가</li><li>자동 매칭과 연승 종료 시 참여 종료로 참여 부담을 낮춰, 전체 유저가 같은 경쟁 목표를 공유하는 이벤트 경험 제공</li><li>기존 매칭 풀에 미치는 영향이 적어, 정기적으로 반복 운영할 수 있는 경쟁 콘텐츠 기반 마련</li></ul></div></div></article>
+        <article class="challenge-case"><header class="challenge-case-head"><span class="challenge-case-index">02</span><h3>5주년 맵 기획</h3></header><div class="challenge-flow"><div class="challenge-step"><strong>상황</strong><p>신규 맵을 기획할 때는 유저가 별도로 규칙을 학습하지 않아도, 맵을 보고 플레이하는 과정에서 목적을 바로 이해하도록 설계하는 것을 중요하게 봤습니다. 실시간 경쟁에서는 새로운 규칙과 변수가 진입 장벽이 될 수 있으므로, 맵의 분위기와 공간 구조, 기믹 위치만으로도 플레이 흐름이 읽히는 컨셉이 필요했습니다. 이 기준 아래 5주년 맵은 두 개의 출발지에서 시작해 지정된 영토를 서로 점령하는 경쟁 방식으로 기획했습니다.</p></div><div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>두 개의 출발지와 지정 영토를 결합해, 시작 지점에서 점령 목표로 이어지는 경쟁 흐름 설계</li><li>맵 분위기·공간 배치·기믹 위치를 함께 설계해, 이미지와 진입 동선만으로 출발지와 점령 대상이 구분되도록 구성</li><li>두 출발지의 의미와 점령 규칙을 맵 구조 안에 담아, 개발자가 플레이 진행 방식과 구현 의도를 바로 이해할 수 있도록 기획</li></ul></div><div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>두 개의 출발지가 단순한 변주가 아니라, 지정 영토를 두고 경쟁하는 목적을 만드는 장치로 작동</li><li>맵의 시각적 구성과 플레이 규칙을 함께 설계해 새로운 규칙을 별도로 설명해야 하는 부담 완화</li><li>컨셉과 플레이 흐름이 명확할수록 직군 간 구현 의도를 빠르게 공유하고 협업 효율도 높아짐</li></ul></div></div></article>
+        <article class="challenge-case"><header class="challenge-case-head"><span class="challenge-case-index">03</span><h3>라이브 데이터 운영 개선</h3></header><div class="challenge-flow"><div class="challenge-step"><strong>상황</strong><p>서비스가 장기화되면서 매주 신규 아이템과 패키지 상품을 위한 데이터 세팅량이 늘어났고, 반복 입력과 검수 과정이 QA 일정에도 영향을 줬습니다. 테스트를 위해 데이터를 세팅한 뒤 다시 라이브 기준으로 되돌리는 과정에서도 입력 이슈와 검수 시간이 누적됐습니다. 개인의 주의에 의존하기보다 데이터 세팅과 검수 프로세스 자체를 개선해, 라이브 일정에 영향을 주지 않는 구조를 만들 필요가 있었습니다.</p></div><div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>QA 빌드에서 스케줄과 무관하게 상품 노출과 설정값을 확인할 수 있도록 처리</li><li>타이머 제어 기능과 서버 시간 영향 분리로, 라이브 일정과 무관한 검수 환경 구성</li><li>QA 치트 기능을 추가해 검증에 필요한 조건을 별도 요청이나 데이터 세팅 없이 즉시 확인하도록 구성</li><li>반복 데이터 입력과 검수 절차를 시스템화해 세팅 과정 단순화</li></ul></div><div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>QA 소요 시간 1일 이상 단축, 반복 데이터 입력 오류 절반 이상 감소</li><li>실서비스 설정을 변경하지 않고도 QA에서 필요한 테스트 조건을 바로 검증할 수 있도록 개선해, 되돌림 작업과 일정 리스크 감소</li><li>반복 작업은 개인의 주의보다 오류가 발생하는 구간을 구조적으로 제거하는 방식으로 개선해야 함을 학습</li></ul></div></div></article>
+      </div></section><span class="page-no">07 / 08</span>
+    </section>
+
+    <section class="sheet project-sheet" id="project-07" data-project="07" aria-label="드래곤네스트2 경력기술서">
+      <header class="project-head compact-project-head" data-project="07"><div><p class="eyebrow">경력기술서 07</p><h1>드래곤네스트2</h1><p class="project-head-summary">드래곤네스트 IP를 기반으로 한 모바일 액션 MORPG입니다. 다양한 시스템과 데이터 테이블을 관리하며 대규모 협업 환경에서 시스템 기획 경험을 쌓았습니다.</p></div></header>
+      <section class="project-profile-card" aria-label="드래곤네스트2 프로젝트 기본 정보"><figure class="project-profile-image"><img src="assets/project-dragon-nest-2.png" alt="드래곤네스트2 대표 이미지"></figure><dl class="project-profile-info">
+        <div class="project-profile-row"><dt>회사</dt><dd>아이덴티티게임즈</dd></div><div class="project-profile-row"><dt>플랫폼·장르</dt><dd>모바일 · 액션 MORPG</dd></div>
+        <div class="project-profile-row"><dt>출시일</dt><dd>2017. 2. 24. (CBT)</dd></div><div class="project-profile-row"><dt>참여 기간</dt><dd>2016.06 - 2017.12</dd></div>
+        <div class="project-profile-row"><dt>팀 역할</dt><dd>시스템 기획</dd></div><div class="project-profile-row"><dt>팀 구성</dt><dd>기획 15명 · 디자인 18명 · 개발 13명</dd></div>
+      </dl></section>
+      <section class="section"><h2 class="section-title">핵심 과제</h2><div class="core-challenges">
+<article class="challenge-case"><header class="challenge-case-head"><span class="challenge-case-index">01</span><h3>정령 시스템</h3></header><div class="challenge-flow"><div class="challenge-step"><strong>상황</strong><p>게임 내 캐릭터 구성은 고정되어 있어, 캐릭터만으로는 전투 경험에 변화를 주는 데 한계가 있었습니다. 이에 캐릭터와 함께 전투하는 정령을 통해 같은 캐릭터 조합 안에서도 서로 다른 전투 방식과 플레이 감각을 만들고자 했습니다. 정령별 특성과 성장에 따라 전투의 흐름과 외형이 달라지도록 설계해, 고정된 캐릭터 구성 안에서도 새로운 전투 경험을 제공하는 것이 목적이었습니다.</p></div><div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>정령별 고유 능력과 전투 역할 설계</li><li>정령 성장 단계에 따른 능력치·외형 변화와 육성 흐름 설계</li><li>정령 조합별 전투 영향도와 성장 효율 데이터 설계</li><li>콘텐츠 구간별 정령 획득·육성 흐름 설계</li></ul></div><div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>정령 선택과 성장을 통해 고정된 캐릭터 구성 안에서도 전투 경험의 변주 제공</li><li>성장 단계별 외형 변화로 능력치 상승 외에도 육성 과정을 체감하도록 구성</li><li>특정 조합의 효율이 높아질수록 선택이 한쪽으로 쏠릴 수 있어, 정령별 성능과 획득 난이도의 균형을 함께 검토</li></ul></div></div></article>
+<article class="challenge-case"><header class="challenge-case-head"><span class="challenge-case-index">02</span><h3>튜토리얼과 콘텐츠 동선 설계</h3></header><div class="challenge-flow"><div class="challenge-step"><strong>상황</strong><p>캐릭터와 세계관, 전투·성장 시스템을 처음 접하는 유저가 자연스럽게 게임에 적응하도록, 퀘스트 진행과 UI 노출, 콘텐츠 해금 순서를 하나의 흐름으로 설계했습니다. 단순히 기능을 안내하는 데 그치지 않고, 캐릭터 간 상호작용과 시나리오를 통해 각 시스템을 이해시키는 방향을 목표로 했습니다.</p></div><div class="challenge-step challenge-method"><strong>방법</strong><ul class="challenge-method-list"><li>퀘스트 툴을 활용한 캐릭터 상호작용 대사와 튜토리얼 구성</li><li>유저 진행 순서에 맞춘 시스템 안내·콘텐츠 해금 순서 설계</li><li>UI·UX 관점의 플레이 테스트를 통한 안내 문구와 진입 흐름 검토</li><li>시나리오 맥락과 시스템 기능을 연결한 대사·연출 구성</li></ul></div><div class="challenge-step"><strong>포스트모템</strong><ul class="challenge-method-list"><li>동선과 안내 순서에 따라 유저의 시스템 이해도가 달라질 수 있음을 확인</li><li>기능 설명보다 퀘스트·대사·UI를 함께 설계할 때 플레이 흐름의 어색함 완화</li><li>콘텐츠 해금 시점과 성장 목표를 함께 제시하는 것이 다음 플레이 목적을 만드는 데 중요함을 학습</li></ul></div></div></article>
+      </div></section><span class="page-no">08 / 08</span>
+    </section>
+  </main>
+  <script>
+    (() => {
+      document.querySelectorAll('.challenge-step > strong').forEach((label) => {
+        if (label.textContent.trim() === '결과') label.textContent = '포스트모템';
+      });
+
+      const controls = Array.from(document.querySelectorAll('[data-section]'));
+      const pages = Array.from(document.querySelectorAll('main > .sheet'));
+      const progress = document.getElementById('project-progress');
+      const previous = document.getElementById('page-prev');
+      const next = document.getElementById('page-next');
+      let pageIndex = 0;
+
+      const updateReadingProgress = () => {
+        const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = scrollRange > 0 ? window.scrollY / scrollRange : 1;
+        const clampedRatio = Math.max(0, Math.min(ratio, 1));
+        progress.style.width = `${clampedRatio * 100}%`;
+      };
+
+      const showPage = (index, updateHash = true) => {
+        pageIndex = Math.max(0, Math.min(index, pages.length - 1));
+        const activePage = pages[pageIndex];
+
+        pages.forEach((page, pageNumber) => {
+          const selected = pageNumber === pageIndex;
+          page.classList.toggle('active-page', selected);
+          page.setAttribute('aria-hidden', selected ? 'false' : 'true');
+        });
+
+        controls.forEach((control) => {
+          const selected = control.dataset.section === activePage.id;
+          control.classList.toggle('active', selected);
+          if (selected) control.setAttribute('aria-current', 'page');
+          else control.removeAttribute('aria-current');
+        });
+
+        previous.disabled = pageIndex === 0;
+        next.disabled = pageIndex === pages.length - 1;
+
+        if (updateHash) history.replaceState(null, '', `#${activePage.id}`);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.requestAnimationFrame(updateReadingProgress);
+      };
+
+      controls.forEach((control) => {
+        control.addEventListener('click', (event) => {
+          event.preventDefault();
+          const targetIndex = pages.findIndex((page) => page.id === control.dataset.section);
+          if (targetIndex >= 0) showPage(targetIndex);
+        });
+      });
+
+      previous.addEventListener('click', () => showPage(pageIndex - 1));
+      next.addEventListener('click', () => showPage(pageIndex + 1));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.target.matches('input, textarea, select, [contenteditable="true"]')) return;
+        if (event.key === 'ArrowLeft') showPage(pageIndex - 1);
+        if (event.key === 'ArrowRight') showPage(pageIndex + 1);
+      });
+
+      window.addEventListener('hashchange', () => {
+        const hashIndex = pages.findIndex((page) => `#${page.id}` === location.hash);
+        if (hashIndex >= 0) showPage(hashIndex, false);
+      });
+
+      window.addEventListener('scroll', updateReadingProgress, { passive: true });
+      window.addEventListener('resize', updateReadingProgress);
+
+      const initialIndex = pages.findIndex((page) => `#${page.id}` === location.hash);
+      showPage(initialIndex >= 0 ? initialIndex : 0, false);
+    })();
+  </script>
+</body>
+</html>
